@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include<iostream>
 #include "player.h"
-#include "background.h"
+
 #include "prize.h"
 #include "obstacle.h"
 #include "collision.h"
@@ -92,7 +92,7 @@ int main()
 
 
     
-    Background background(0, 0);
+    
     prize crown(700, 700, c_prize);
 
 

@@ -1,7 +1,7 @@
 #pragma once
 #include<SFML/Graphics.hpp>
 #include<iostream>
-#include "background.h"
+
 #include "prize.h"
 using namespace std;
 using namespace sf;

@@ -1,5 +1,5 @@
 #include "player.h"
-#include "background.h"
+
 
 
 Player::Player(float x, float y) {

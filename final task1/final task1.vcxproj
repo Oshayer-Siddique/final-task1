@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="background.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="material.cpp" />
@@ -148,7 +147,6 @@
     <ClCompile Include="prize.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="background.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="material.h" />
     <ClInclude Include="obstacle.h" />
