@@ -173,68 +173,6 @@ void Player::inThefield(void) {
 	}
 }
 
-void Player::stone_collsion(vector<Sprite>& stone)
-
-		
-{	
-
-	FloatRect nextPos;
-	
-	
-	for (int i = 0;i < 4;i++) {
-
-		FloatRect boundplayer = sprite.getGlobalBounds();
-	
-		FloatRect boundstone = stone[i].getGlobalBounds();
-
-		nextPos = boundplayer;
-		nextPos.left += velocityX;
-		nextPos.top += velocityX;
-		if (boundstone.intersects(nextPos)) {
-			//Right Collision
-			if ((boundplayer.left < boundstone.left) &&
-				(boundplayer.left + boundplayer.width < boundstone.left + boundstone.width) &&
-				(boundplayer.top < boundstone.top +boundstone.height ) &&
-				(boundplayer.top + boundplayer.height > boundstone.top)) {
-				velocityX = 0;
-				sprite.setPosition(boundstone.left - boundplayer.width, boundplayer.top);
-			}
-			//Left Collision
-
-			else if ((boundplayer.left > boundstone.left) &&
-				(boundplayer.left + boundplayer.width > boundstone.left + boundstone.width) &&
-				(boundplayer.top < boundstone.top + boundstone.height) &&
-				(boundplayer.top + boundplayer.height > boundstone.top)) {
-
-				velocityX = 0;
-				sprite.setPosition(boundstone.left + boundstone.width, boundplayer.top);
-
-			}
-
-			// Bottom Collision
-
-			else if ((boundplayer.top < boundstone.top) &&
-				(boundplayer.top + boundplayer.height < boundstone.top + boundstone.height) &&
-				(boundplayer.left < boundstone.left + boundstone.width) &&
-				(boundplayer.left + boundplayer.width > boundstone.left)) {
-				velocityX = 0;
-				sprite.setPosition(boundplayer.left,boundstone.top - boundplayer.height);
-			}
-
-			//Top Collision
-			else if ((boundplayer.top > boundstone.top) &&
-				(boundplayer.top + boundplayer.height > boundstone.top + boundstone.height) &&
-				(boundplayer.left < boundstone.left + boundstone.width) &&
-				(boundplayer.left + boundplayer.width > boundstone.left)) {
-				velocityX = 0;
-				sprite.setPosition(boundplayer.left, boundstone.top + boundstone.height);
-			}
-		}
-
-
-	
-	}
-}
 
 
 

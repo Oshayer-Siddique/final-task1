@@ -12,12 +12,7 @@ public:
 	Background();
 
 	//vector<Sprite>stone;
-
 	void set_background(RenderWindow& window);
-
-	void set_obstacle_stone(RenderWindow& window,vector<Sprite>&stone);
-
-	//void set_prize(RenderWindow& window,vector<Sprite>&prize);
 private:
 	Sprite sprite;
 

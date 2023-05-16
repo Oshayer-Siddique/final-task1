@@ -7,6 +7,7 @@ using namespace std;
 using namespace sf;
 class Player{
 public:
+	Sprite sprite;
 	Player(float x, float y);
 	
 	
@@ -29,7 +30,7 @@ public:
 
 	
 private:
-	Sprite sprite;
+	
 	Sprite prize;
 	float velocityX = 8;
 	float velocityY = 0;
