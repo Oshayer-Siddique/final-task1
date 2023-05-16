@@ -6,10 +6,9 @@ Set_obstacle::Set_obstacle(int num) {
 	obstacle_num = num;
 }
 
-void Set_obstacle::set_tree(RenderWindow& window, vector<Sprite>& Tree) {
+void Set_obstacle::set_tree(RenderWindow& window, vector<Sprite>& Tree,Texture& TREE){
 
-	Texture TREE;
-	TREE.loadFromFile("tree.png");
+
 
 	for (int i = 0;i < 10;i++) {
 		Tree[i].setTexture(TREE);
@@ -27,11 +26,8 @@ void Set_obstacle::set_tree(RenderWindow& window, vector<Sprite>& Tree) {
 
 }
 
-void Set_obstacle::set_stone(RenderWindow& window, vector<Sprite>& Stone) {
-	Texture STONE;
+void Set_obstacle::set_stone(RenderWindow& window, vector<Sprite>& Stone,Texture& STONE) {
 
-
-	STONE.loadFromFile("stone.png");
 
 	for (int i = 0; i < 4; i++) {
 		Stone[i].setTexture(STONE);

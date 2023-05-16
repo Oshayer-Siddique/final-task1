@@ -11,11 +11,11 @@ public:
 	Set_obstacle(int num);
 	int obstacle_num;
 	
-	void set_tree(RenderWindow& window, vector<Sprite>& Tree);
+	void set_tree(RenderWindow& window, vector<Sprite>& Tree,Texture& TREE);
 
 	void set_water(RenderWindow& window, vector<Sprite>& Water);
 
-	void set_stone(RenderWindow& window, vector<Sprite>& Stone);
+	void set_stone(RenderWindow& window, vector<Sprite>& Stone,Texture& STONE);
 
 	void set_bush(RenderWindow& window, vector<Sprite>& Bush);
 

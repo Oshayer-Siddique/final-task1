@@ -142,7 +142,7 @@ void Player::HandleInput(RenderWindow& window,float velocityX) {
 
 
 
-	View view(FloatRect(0, 0, 2500, 1500));
+	View view(FloatRect(0, 0, 1800, 1000));
 	window.setView(view);
 	view.setCenter(sprite.getPosition());
 	window.setView(view);
