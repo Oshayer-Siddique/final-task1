@@ -1,16 +1,17 @@
 #include "collision.h"
 
-Collision::Collision(Sprite& A) {
+Collision::Collision() {
 	
 }
 
 void Collision::collision_chk(Sprite& A, vector<Sprite>& B) {
 	FloatRect nextPos;
 
+	FloatRect boundplayer = A.getGlobalBounds();
 
 	for (int i = 0;i < 4;i++) {
 
-		FloatRect boundplayer = A.getGlobalBounds();
+		
 
 		FloatRect boundobject = B[i].getGlobalBounds();
 

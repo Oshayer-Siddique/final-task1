@@ -1,18 +1,19 @@
 #include <SFML/Graphics.hpp>
 #include<iostream>
-#include "player.h"
 
+#include "enemy.h"
 #include "prize.h"
 #include "obstacle.h"
 #include "collision.h"
 #include "material.h"
+#include "Hero.h"
 using namespace std;
 using namespace sf;
 
 int main()
 {
     
-    Sprite c_prize;
+    
 
     /* -------------------------------------------------------------------------- */
     /*                                SETTING BACKGROUND                          */
@@ -24,6 +25,7 @@ int main()
     PLF.setPosition(0, 0);
 
 
+    
 
     /* -------------------------------------------------------------------------- */
     /*                                LOADING TEXTURE                             */
@@ -36,12 +38,36 @@ int main()
     Texture STONE;
     STONE.loadFromFile("stone.png");
 
+    vector<Texture>dragon_frames(10);
+
+    for (int i = 0;i < 4;i++) {
+        if (dragon_frames[i].loadFromFile("dragon_forward" + to_string(i + 1) + ".png")) {
+            cout << "Could load: " << i << "\n";
+        }
+        //dragon_frames.push_back(dragon_frame);
+    }
+
+    Texture heroTexture;
+    heroTexture.loadFromFile("hero_movement.png");
+
+
+    //Animation animation(&heroTexture,Vector2u(4,4), 0.1f);
+
+   
+
+    float deltaTime = 0;
+    Clock clock;
+
+
+
     
     /* -------------------------------------------------------------------------- */
     /*                                DECLEARING OBSTACLE                         */
     /* -------------------------------------------------------------------------- */
     vector<Sprite>S_TREE(50);
     vector<Sprite>S_STONE(50);
+    Sprite dragon_sprite;
+
 
 
 
@@ -50,13 +76,14 @@ int main()
     /* -------------------------------------------------------------------------- */
     Set_obstacle G_TREE(50);
     Set_obstacle G_STONE(50);
+    Enemy G_DRAGON(dragon_sprite);
 
 
     /* -------------------------------------------------------------------------- */
     /*                                DECLEARING MATERIAL                         */
     /* -------------------------------------------------------------------------- */
     Sprite A;
-
+    Sprite c_prize;
 
     /* -------------------------------------------------------------------------- */
     /*                                MATERIAL OBJECTS                            */
@@ -71,7 +98,8 @@ int main()
     /* -------------------------------------------------------------------------- */
     /*                               PLAYER INFORMATION                           */
     /* -------------------------------------------------------------------------- */
-    Player modus(20, 20);
+    
+    Hero Oshayer(&heroTexture, Vector2u(4, 4), 0.1f, 100);
 
 
 
@@ -80,7 +108,7 @@ int main()
     /*                                COLLISION CHECK                             */
     /* -------------------------------------------------------------------------- */
 
-    Collision player_obstacle(modus.sprite);
+    Collision player_obstacle;
 
 
 
@@ -88,7 +116,7 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(1800, 1000), "SFML works!");
 
-    window.setFramerateLimit(30);
+    window.setFramerateLimit(60);
 
 
     
@@ -104,6 +132,7 @@ int main()
     while (window.isOpen())
     {
 
+        deltaTime = clock.restart().asSeconds();
         Event event;
         while (window.pollEvent(event))
         {
@@ -117,11 +146,17 @@ int main()
         window.clear(Color::White);
 
         window.draw(PLF);
+
+        
+        
         /* -------------------------------------------------------------------------- */
         /*                                                                            */
         /* -------------------------------------------------------------------------- */
 
-        modus.prize_hijack(window, c_prize);
+        //modus.prize_hijack(window, c_prize);
+        
+
+        
 
 
 
@@ -138,27 +173,25 @@ int main()
 
         
         /* -------------------------------------------------------------------------- */
-        /*                  HANDLE INPUT FUNCTION                                     */
+        /*                  HERO MOVEMENT AND ANIMATION  and Other TASKS              */
         /* -------------------------------------------------------------------------- */
-
-        modus.HandleInput(window, 8);
+        G_DRAGON.enemy_animation(window, dragon_sprite, dragon_frames);
+    
+        Oshayer.Update_movement(deltaTime);
+        Oshayer.Draw(window);
+        Oshayer.prize_hijack(window, c_prize);
+        
 
 
         /* -------------------------------------------------------------------------- */
         /*                  COLLISION CHK FUNCTION                                    */
         /* -------------------------------------------------------------------------- */
 
-        player_obstacle.collision_chk(modus.sprite, S_STONE);
-        player_obstacle.collision_chk(modus.sprite, S_TREE);
-
-        modus.inThefield();
 
 
+        player_obstacle.collision_chk(Oshayer.body, S_STONE);
 
-
-
-
-
+      
 
 
         window.display();
