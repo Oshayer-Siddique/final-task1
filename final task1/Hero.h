@@ -7,11 +7,15 @@ using namespace sf;
 
 class Hero {
 public:
-	Hero(Texture* texture, Vector2u imageCount, float sitchTime,float speed);
+	Hero(Texture* texture, Vector2u imageCount, float switchTime,float speed);
 
-	void Update_movement(float deltaTime);
+	void Update_movement(Texture& texture,float deltaTime);
+
+	void Update_fight(Texture& texture,float deltaTime);
 
 	void prize_hijack(RenderWindow& window, Sprite& c_prize);
+
+
 
 	void Draw(RenderWindow& window);
 	Sprite body;

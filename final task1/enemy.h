@@ -1,22 +1,33 @@
 #pragma once
 
-#include<SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include<iostream>
-
-
-using namespace std;
-using namespace sf;
-
-
-class Enemy {
+#include "Animation.h"
+class Enemy
+{
 public:
-	Enemy(Sprite& A1);
-	void enemy_animation(RenderWindow& window, Sprite& A1, vector<Texture>& E1);
-private:
+	Enemy(Texture* texture, Vector2u imageCount, float sitchTime, float speed);
 
-	Clock clk;
-	float framerate = 0.1f;//2 frames per second
-	int currentframe = 0;
-	Time elapsedTime = clk.restart();
+	void Update_enemy_movement(Texture& texture, float deltaTime,Sprite& Target);
+
+
+	void Draw(RenderWindow& window);
+
+	Sprite enemyBody;
+
+
+private:
+	Animation enemy_animation;
+
+	int row;
+
+	float speed;
+	float length;
+
+	Vector2f enemyVelocity;
+	Vector2f normalize;
+
+
 
 };
+

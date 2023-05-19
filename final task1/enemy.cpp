@@ -1,24 +1,69 @@
-#include "enemy.h"
+#include "Enemy.h"
+#include "Hero.h"
 
-Enemy::Enemy(Sprite& A1) {
-	
+Enemy::Enemy(Texture* texture, Vector2u imageCount, float switchTime, float speed) :
+	enemy_animation(texture,imageCount,switchTime)
+
+{
+	this->speed = speed;
+	row = 0;
+	enemyBody.setTexture(*texture);
+	enemyBody.setPosition(1000, 200);
+
 }
 
-void Enemy::enemy_animation(RenderWindow& window, Sprite& A1, vector<Texture>& E1) {
+void Enemy::Update_enemy_movement(Texture& texture, float deltaTime, Sprite& Target) {
 
-	A1.setTexture(E1[0]);
+	float x = Target.getPosition().x;
+	float y = Target.getPosition().y;
 
-	A1.setPosition(800, 800);
+	float u = enemyBody.getPosition().x;
+	float v = enemyBody.getPosition().y;
 
+	if (x > u) {
+		enemy_animation.Update(1, deltaTime);
 
-	elapsedTime += clk.restart();
-	if (elapsedTime.asSeconds() >= framerate) {
-		currentframe = (currentframe + 1) % 4;
-		A1.setTexture(E1[currentframe]);
-		clk.restart();
+	}
+	else  if (x < u) {
+		enemy_animation.Update(3,deltaTime);
 	}
 
-	window.draw(A1);
 
 
+
+
+	cout << x << " " << y << " " << u << " " << v << endl;
+
+
+
+	
+
+	float enemyspeed = 70;
+
+
+	Vector2f enemyVelocity(0, 0);
+	 
+
+	enemyVelocity = Target.getPosition() - enemyBody.getPosition();
+
+	
+	length = sqrt(enemyVelocity.x * enemyVelocity.x + enemyVelocity.y * enemyVelocity.y);
+	enemyVelocity = enemyVelocity / length;
+
+	enemyVelocity = enemyVelocity * enemyspeed;
+
+	enemyBody.move(enemyVelocity*deltaTime);
+
+	
+
+
+	enemyBody.setTextureRect(enemy_animation.uvRect);
+
+	
+
+}
+
+
+void Enemy::Draw(RenderWindow& window) {
+	window.draw(enemyBody);
 }

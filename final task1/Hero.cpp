@@ -12,52 +12,10 @@ Hero::Hero(Texture* texture, Vector2u imageCount, float switchTime, float speed)
 
 }
 
-void Hero::Update_movement(float deltaTime) {
+void Hero::Update_movement(Texture& texture, float deltaTime) {
     Vector2f position(0, 0);
 
-    /*if (Keyboard::isKeyPressed(Keyboard::D)) {
 
-            animation.Update(1, deltaTime);
-            position.x += 100 * deltaTime;
-            body.move(position);
-
-    }
-
-    else if (Keyboard::isKeyPressed(Keyboard::A)) {
- 
-            animation.Update(2, deltaTime);
-            position.x -= 100 * deltaTime;
-            body.move(position);
-
-    }
-    else if (Keyboard::isKeyPressed(Keyboard::W)) {
-
-            animation.Update(3, deltaTime);
-            position.y -= 100 * deltaTime;
-            body.move(position);
-
-
-
-    }
-    else if (Keyboard::isKeyPressed(Keyboard::S)) {
-
-       
-            animation.Update(0, deltaTime);
-            position.y += 100 * deltaTime;
-            body.move(position);
-
-
-
-    }
-     if (Keyboard::isKeyPressed(Keyboard::A)) {
-        if (Keyboard::isKeyPressed(Keyboard::W)) {
-            animation.Update(2, deltaTime);
-            position.x += 70 * deltaTime;
-            position.y += 70 * deltaTime;
-            body.move(position);
-
-        }
-    }*/
 
     
     if (Keyboard::isKeyPressed(Keyboard::D)) {
@@ -137,6 +95,75 @@ void Hero::prize_hijack(RenderWindow& window, Sprite& c_prize) {
             c_prize.setPosition(body.getPosition().x + 50, body.getPosition().y + 50);
         }
     }
+
+}
+
+void Hero::Update_fight(Texture& texture,float deltaTime) {
+
+    Vector2f position(0, 0);
+
+
+
+
+    if (Keyboard::isKeyPressed(Keyboard::D)) {
+        if (Keyboard::isKeyPressed(Keyboard::S)) {
+            animation.Update(1, deltaTime);
+            position.x += 70 * deltaTime;
+            position.y += 70 * deltaTime;
+            body.move(position);
+        }
+        else if (Keyboard::isKeyPressed(Keyboard::W)) {
+            animation.Update(1, deltaTime);
+            position.x += 70 * deltaTime;
+            position.y -= 70 * deltaTime;
+            body.move(position);
+        }
+
+        else {
+            animation.Update(1, deltaTime);
+            position.x += 100 * deltaTime;
+            body.move(position);
+
+        }
+    }
+
+    else if (Keyboard::isKeyPressed(Keyboard::A)) {
+        if (Keyboard::isKeyPressed(Keyboard::S)) {
+            animation.Update(2, deltaTime);
+            position.x -= 70 * deltaTime;
+            position.y += 70 * deltaTime;
+            body.move(position);
+        }
+        else if (Keyboard::isKeyPressed(Keyboard::W)) {
+            animation.Update(2, deltaTime);
+            position.x -= 70 * deltaTime;
+            position.y -= 70 * deltaTime;
+            body.move(position);
+        }
+
+        else {
+            animation.Update(2, deltaTime);
+            position.x -= 100 * deltaTime;
+            body.move(position);
+
+        }
+    }
+
+    else if (Keyboard::isKeyPressed(Keyboard::W)) {
+        animation.Update(3, deltaTime);
+        position.y -= 100 * deltaTime;
+        body.move(position);
+    }
+
+    else if (Keyboard::isKeyPressed(Keyboard::S)) {
+        animation.Update(0, deltaTime);
+        position.y += 100 * deltaTime;
+        body.move(position);
+    }
+
+
+
+    body.setTextureRect(animation.uvRect);
 
 }
 

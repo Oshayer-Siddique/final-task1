@@ -11,9 +11,3 @@ void prize::set_prize(RenderWindow& window,Sprite& c_prize) {
 	window.draw(c_prize);
 
 }
-
-/*void prize::handle_prize(RenderWindow& window, Sprite& c_prize) {
-	if (Keyboard::isKeyPressed(Keyboard::H)) {
-		c_prize.move(10, 10);
-	}
-}*/

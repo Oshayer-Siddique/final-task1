@@ -1,12 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include<iostream>
 
-#include "enemy.h"
+#include "Hazard.h"
 #include "prize.h"
 #include "obstacle.h"
 #include "collision.h"
 #include "material.h"
 #include "Hero.h"
+#include "Enemy.h"
 using namespace std;
 using namespace sf;
 
@@ -40,15 +41,28 @@ int main()
 
     vector<Texture>dragon_frames(10);
 
-    for (int i = 0;i < 4;i++) {
-        if (dragon_frames[i].loadFromFile("dragon_forward" + to_string(i + 1) + ".png")) {
-            cout << "Could load: " << i << "\n";
-        }
-        //dragon_frames.push_back(dragon_frame);
+    //for (int i = 0;i < 4;i++) {
+    //    (dragon_frames[i].loadFromFile("dragon_forward" + to_string(i + 1) + ".png"));
+    //        
+
+    //}
+
+    vector<Texture> fire_frames(10);
+    for (int i = 0;i < 6;i++) {
+        fire_frames[i].loadFromFile("fire" + to_string(i + 1) + ".png");
     }
 
     Texture heroTexture;
     heroTexture.loadFromFile("hero_movement.png");
+
+    Texture dragonTexture;
+    dragonTexture.loadFromFile("dragon.png");
+   /* Texture hero_fightTexture;
+    hero_fightTexture.loadFromFile("hero_fight.png");*/
+
+
+
+
 
 
     //Animation animation(&heroTexture,Vector2u(4,4), 0.1f);
@@ -67,6 +81,8 @@ int main()
     vector<Sprite>S_TREE(50);
     vector<Sprite>S_STONE(50);
     Sprite dragon_sprite;
+    Sprite fire_sprite;
+
 
 
 
@@ -76,7 +92,8 @@ int main()
     /* -------------------------------------------------------------------------- */
     Set_obstacle G_TREE(50);
     Set_obstacle G_STONE(50);
-    Enemy G_DRAGON(dragon_sprite);
+    Hazard G_DRAGON(dragon_sprite,800,800);
+    Hazard G_FIRE(fire_sprite,1000,800);
 
 
     /* -------------------------------------------------------------------------- */
@@ -100,6 +117,10 @@ int main()
     /* -------------------------------------------------------------------------- */
     
     Hero Oshayer(&heroTexture, Vector2u(4, 4), 0.1f, 100);
+    Enemy Drago(&dragonTexture, Vector2u(3, 4), 0.1f, 100);
+   
+
+    //Hero Oshayer1(&hero_fightTexture,Vector2u(4,4),0.1,100);
 
 
 
@@ -116,7 +137,7 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(1800, 1000), "SFML works!");
 
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(200);
 
 
     
@@ -175,12 +196,18 @@ int main()
         /* -------------------------------------------------------------------------- */
         /*                  HERO MOVEMENT AND ANIMATION  and Other TASKS              */
         /* -------------------------------------------------------------------------- */
-        G_DRAGON.enemy_animation(window, dragon_sprite, dragon_frames);
-    
-        Oshayer.Update_movement(deltaTime);
+        //G_DRAGON.enemy_animation(window, dragon_sprite, dragon_frames);
+        G_FIRE.hazard_animation(window,fire_sprite,fire_frames);
+
+        
+
+        Oshayer.Update_movement(heroTexture,deltaTime);
+        
         Oshayer.Draw(window);
         Oshayer.prize_hijack(window, c_prize);
         
+        Drago.Update_enemy_movement(dragonTexture,deltaTime,Oshayer.body);
+        Drago.Draw(window);
 
 
         /* -------------------------------------------------------------------------- */
