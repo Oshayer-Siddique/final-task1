@@ -18,6 +18,7 @@ public:
 	void levelMoveDown();
 	void drawlevel(RenderWindow& levels);
 	int selectmenu(MainMenu mainmenu, Sprite& backmenu);
+	Text mainMenu[menufunctions];
 
 	int MainMenuPressed() {
 		return MainMenuSelected;
@@ -31,7 +32,6 @@ private:
 	int MainMenuSelected;
 	int levelmenuSelected;
 	Font font;
-	Text mainMenu[menufunctions];
 
 };
 

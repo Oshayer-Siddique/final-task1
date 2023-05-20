@@ -15,12 +15,13 @@ Hero::Hero(Texture* texture, Vector2u imageCount, float switchTime):
 void Hero::Update_movement(Texture& texture, float deltaTime,float speed) {
     Vector2f position(0, 0);
 
-
+    
 
     
     if (Keyboard::isKeyPressed(Keyboard::D)) {
         if (Keyboard::isKeyPressed(Keyboard::S)) {
             animation.Update(3, deltaTime);
+
             position.x += speed* 0.7  * deltaTime;
             position.y += speed * 0.7 * deltaTime;
             body.move(position);
@@ -183,7 +184,31 @@ void Hero::prize_hijack(RenderWindow& window, Sprite& c_prize) {
 //
 //}
 
+int Hero::Health(Sprite& A, Sprite& B) {
 
+    int counter = 0;
+    FloatRect a = A.getGlobalBounds();
+    FloatRect b = B.getGlobalBounds();
+    if (a.intersects(b)) {
+        counter++;
+    }
+
+    cout << counter << endl;
+    return counter;
+}
+
+
+void Hero::Update_special_movement(Texture& texture, float deltaTime, float speed) {
+    elapsed += clk.restart();
+    if (!powerGenerate && elapsed >= interval) {
+        powerGenerate = true;
+        if (powerGenerate == true && elapsed >= interval + seconds(3)) {
+            powerGenerate = false;
+            elapsed = milliseconds(0);
+        }
+
+    }
+}
 
 
 void Hero::Draw(RenderWindow& window) {

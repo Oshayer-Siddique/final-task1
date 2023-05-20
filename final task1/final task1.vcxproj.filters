@@ -89,5 +89,11 @@
     <ClInclude Include="SpellCast.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="level1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

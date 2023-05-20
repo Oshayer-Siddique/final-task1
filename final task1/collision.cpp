@@ -9,7 +9,7 @@ void Collision::collision_chk(Sprite& A, vector<Sprite>& B) {
 
 	FloatRect boundplayer = A.getGlobalBounds();
 
-	for (int i = 0;i < 4;i++) {
+	for (int i = 0;i < 50;i++) {
 
 		
 

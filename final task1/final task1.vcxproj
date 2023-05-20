@@ -159,6 +159,8 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="hazard.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="level.h" />
+    <ClInclude Include="level1.h" />
     <ClInclude Include="mainmenu.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="material.h" />
