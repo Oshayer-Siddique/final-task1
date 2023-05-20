@@ -48,6 +48,9 @@
     <ClCompile Include="mainmenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SpellCast.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="prize.h">
@@ -82,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="Header.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpellCast.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

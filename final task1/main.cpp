@@ -9,6 +9,7 @@
 #include "Hero.h"
 #include "Enemy.h"
 #include "mainmenu.h"
+#include "SpellCast.h"
 using namespace std;
 using namespace sf;
 
@@ -75,6 +76,14 @@ int main()
 
     Texture greenfire;
     greenfire.loadFromFile("greenfire.png");
+
+    Texture spelltexture;
+    spelltexture.loadFromFile("spellcast_red.png");
+
+
+    
+    
+
    /* Texture hero_fightTexture;
     hero_fightTexture.loadFromFile("hero_fight.png");*/
 
@@ -134,10 +143,15 @@ int main()
     /*                               PLAYER INFORMATION                           */
     /* -------------------------------------------------------------------------- */
     
-    Hero Oshayer(&heroTexture, Vector2u(7, 12), 0.1f, 100);
+    Hero Oshayer(&heroTexture, Vector2u(7, 12), 0.1f);
     Enemy Drago(&dragonTexture, Vector2u(3, 4), 0.1f, 100);
     Hazard dangerfire(&firetexture, Vector2u(9,1), 0.1f, 100,1000,500);
     Hazard G_greenfire(&greenfire, Vector2u(8, 1), 0.1f, 100, 800, 500);
+
+    SpellCast G_redSpell(spelltexture);
+
+
+    
 
 
    
@@ -250,10 +264,29 @@ int main()
 
                             int x = crown.get_prize_position(c_prize);
 
-                            cout << x << endl;
+                            //cout << x << endl;
 
-                            Oshayer.Update_movement(heroTexture, deltaTime);
+                            if (x == -1500) {
+                                Oshayer.Update_movement(heroTexture, deltaTime, 70);
 
+                            }
+                            else {
+                                Oshayer.Update_movement(heroTexture, deltaTime, 100);
+
+                            }
+
+
+                           
+
+                           
+                            G_redSpell.Shoot(window,deltaTime,Oshayer.body,Drago.enemyBody);
+                           
+
+                            
+
+                            
+                            
+                            
                             Oshayer.Draw(window);
                             Oshayer.prize_hijack(window, c_prize);
 
