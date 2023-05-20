@@ -1,16 +1,28 @@
 #include "hazard.h"
 
-Hazard::Hazard(Sprite& A1,float x, float y) {
+Hazard::Hazard(Texture* texture, Vector2u imageCount, float switchTime, float speed,float x, float y) :
+	hazard_animation(texture, imageCount, switchTime)
+{
+	this->speed = speed;
 
-	A1.setPosition(x, y);
-	
+	row = 0;
+	hazardBody.setTexture(*texture);
+	hazardBody.setPosition(x,y);
+
+
 }
 
-void Hazard::hazard_animation(RenderWindow& window, Sprite& A1, vector<Texture>& E1) {
+void Hazard::Update_hazard(Texture& texture, float deltaTime) {
 
+
+	hazard_animation.Update(0,deltaTime);
+
+	hazardBody.setTextureRect(hazard_animation.uvRect);
+
+}
+
+void Hazard::update_hazard_unbalanced_pic(RenderWindow& window,Sprite& A1, vector<Texture>& E1) {
 	A1.setTexture(E1[0]);
-
-	
 
 
 	elapsedTime += clk.restart();
@@ -20,7 +32,12 @@ void Hazard::hazard_animation(RenderWindow& window, Sprite& A1, vector<Texture>&
 		clk.restart();
 	}
 
-	window.draw(A1);
+
+	
 
 
+}
+
+void Hazard::Draw(RenderWindow& window) {
+	window.draw(hazardBody);
 }

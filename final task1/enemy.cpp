@@ -8,7 +8,7 @@ Enemy::Enemy(Texture* texture, Vector2u imageCount, float switchTime, float spee
 	this->speed = speed;
 	row = 0;
 	enemyBody.setTexture(*texture);
-	enemyBody.setPosition(1000, 200);
+	enemyBody.setPosition(0, 0);
 
 }
 
@@ -30,34 +30,40 @@ void Enemy::Update_enemy_movement(Texture& texture, float deltaTime, Sprite& Tar
 
 
 
+		
 
 
-	cout << x << " " << y << " " << u << " " << v << endl;
+		float enemyspeed = 70;
 
+
+		Vector2f enemyVelocity(0, 0);
+
+
+		enemyVelocity = Target.getPosition() - enemyBody.getPosition();
+
+
+		length = sqrt(enemyVelocity.x * enemyVelocity.x + enemyVelocity.y * enemyVelocity.y);
+		enemyVelocity = enemyVelocity / length;
+
+		enemyVelocity = enemyVelocity * enemyspeed;
+
+		enemyBody.move(enemyVelocity * deltaTime);
+
+
+
+
+		
 
 
 	
-
-	float enemyspeed = 70;
-
-
-	Vector2f enemyVelocity(0, 0);
-	 
-
-	enemyVelocity = Target.getPosition() - enemyBody.getPosition();
-
-	
-	length = sqrt(enemyVelocity.x * enemyVelocity.x + enemyVelocity.y * enemyVelocity.y);
-	enemyVelocity = enemyVelocity / length;
-
-	enemyVelocity = enemyVelocity * enemyspeed;
-
-	enemyBody.move(enemyVelocity*deltaTime);
-
-	
-
 
 	enemyBody.setTextureRect(enemy_animation.uvRect);
+
+
+
+
+	//cout << x << " " << y << " " << u << " " << v << endl;
+
 
 	
 

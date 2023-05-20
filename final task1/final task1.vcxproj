@@ -149,6 +149,7 @@
     <ClCompile Include="material.cpp" />
     <ClCompile Include="obstacle.cpp" />
     <ClCompile Include="prize.cpp" />
+    <ClCompile Include="mainmenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -156,6 +157,8 @@
     <ClInclude Include="collision.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="hazard.h" />
+    <ClInclude Include="Header.h" />
+    <ClInclude Include="mainmenu.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="material.h" />
     <ClInclude Include="obstacle.h" />

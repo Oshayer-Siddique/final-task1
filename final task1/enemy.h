@@ -23,6 +23,7 @@ private:
 
 	float speed;
 	float length;
+	float enemyspeed;
 
 	Vector2f enemyVelocity;
 	Vector2f normalize;

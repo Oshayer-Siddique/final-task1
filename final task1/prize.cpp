@@ -11,3 +11,11 @@ void prize::set_prize(RenderWindow& window,Sprite& c_prize) {
 	window.draw(c_prize);
 
 }
+
+
+int prize::get_prize_position(Sprite& c_prize) {
+
+	return c_prize.getPosition().x;
+
+
+}
