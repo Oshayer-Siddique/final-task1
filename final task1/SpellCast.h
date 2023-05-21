@@ -15,15 +15,28 @@ public:
 
 	void Shoot(RenderWindow& window,float deltaTime, Sprite& shooter, Sprite& target);
 
+	void Shoot_hero(RenderWindow& window, float deltaTime, Sprite& shooter, Sprite& target);
+
+	void spellTimer();
+
 private:
 	Texture texture;
 
 	Vector2f spellVelocity;
+	Vector2f  Xspellvelocity;
+
+
+	Time elapsedtime = milliseconds(0);
+	Time intervaltime = seconds(3);
+	Clock clk1;
+	bool power = false;
 
 
 	float time = 0;
 
 	bool shoot = false;
+
+	float XvelocityX;
 
 	float velocityX = 0;
 	float velocityY = 0;

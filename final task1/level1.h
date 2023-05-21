@@ -33,7 +33,8 @@ int level1(Sprite& backg,
     Texture& dragonTexture,
     Texture& firetexture,
     Texture& greenfire,
-    Texture& spelltexture
+    Texture& spelltexture,
+    Texture& fireballTexture
 )
 {
 
@@ -65,6 +66,8 @@ int level1(Sprite& backg,
 
     prize crown(700, 700, c_prize);
 
+    
+
 
 
     Animation animation(&heroTexture, Vector2u(4, 4), 0.1f);
@@ -76,27 +79,14 @@ int level1(Sprite& backg,
 
 
 
-    Hero Oshayer(&heroTexture, Vector2u(7, 12), 0.1f);
-    Enemy Drago(&dragonTexture, Vector2u(3, 4), 0.1f, 100);
+    Hero Oshayer(&heroTexture, Vector2u(7, 12), 0.1f,50,0);
+    Enemy Drago(&dragonTexture, Vector2u(3, 4), 0.1f, 100,1500,0);
     Hazard dangerfire(&firetexture, Vector2u(9, 1), 0.1f, 100, 1000, 500);
     Hazard G_greenfire(&greenfire, Vector2u(8, 1), 0.1f, 100, 800, 500);
 
     SpellCast G_redSpell(spelltexture);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    SpellCast dragonfire(fireballTexture);
 
 
 
@@ -122,6 +112,10 @@ int level1(Sprite& backg,
 
         window.clear();
         window.draw(backg);
+        G_LEVEL1.set_borber(window, S_BORDER, bordertex);
+        G_LEVEL1.set_borderhori(window, S_BORDERHORI, borderhoritex);
+        G_LEVEL1.set_door(window, S_DOOR, doortex, doorrevtex);
+        G_LEVEL1.set_stone(window, S_STONE, stonetex);
 
 
         /* -------------------------------------------------------------------------- */
@@ -154,7 +148,7 @@ int level1(Sprite& backg,
 
         int x = crown.get_prize_position(c_prize);
 
-        cout << x << endl;
+        //cout << x << endl;
 
         if (x == -1500) {
             Oshayer.Update_movement(heroTexture, deltaTime, 70);
@@ -165,17 +159,25 @@ int level1(Sprite& backg,
 
         }
 
-
+        dragonfire.spellTimer();
+        //dragonfire.Shoot_hero(window, deltaTime,Drago.enemyBody,Oshayer.body);
 
 
 
         G_redSpell.Shoot(window, deltaTime, Oshayer.body, Drago.enemyBody);
+        //G_redSpell.Shoot(window, deltaTime, Drago.enemyBody, Oshayer.body);
+        //dragonfire.Shoot(window, deltaTime, Drago.enemyBody, Oshayer.body);
 
-        Oshayer.Health(Oshayer.body, Drago.enemyBody);
+        dragonfire.Shoot_hero(window, deltaTime, Drago.enemyBody, Oshayer.body);
 
 
 
+        //Oshayer.Health(Oshayer.body, Drago.enemyBody);
 
+        //dragonfire.spellTimer(Drago.enemyBody);
+
+        Oshayer.Update_Clock(heroTexture, deltaTime, 100);
+        Oshayer.special_movement(heroTexture, deltaTime, 200);
 
 
         Oshayer.Draw(window);
@@ -191,17 +193,33 @@ int level1(Sprite& backg,
         G_greenfire.Update_hazard(greenfire, deltaTime);
         G_greenfire.Draw(window);                              
 
+
+        RectangleShape healthbar(Vector2f(20,100));
+
+        healthbar.setFillColor(Color::Green);
+
+        healthbar.setPosition(1750, 50);
+
+        window.draw(healthbar);
+
+        //Oshayer.collider(S_STONE);
+
+        //cout << player_obstacle.collision_chk_S(Oshayer.body, Drago.enemyBody) << endl;
 		
 
 		//G_LEVEL1.set_stone(window,S_STONE,stonetex);
-		G_LEVEL1.set_borber(window, S_BORDER, bordertex);
-		G_LEVEL1.set_borderhori(window, S_BORDERHORI, borderhoritex);
-		G_LEVEL1.set_door(window, S_DOOR, doortex, doorrevtex);
-		G_LEVEL1.set_stone(window, S_STONE, stonetex);
 
-        player_obstacle.collision_chk(Oshayer.body,S_BORDER);
-        player_obstacle.collision_chk(Oshayer.body,S_BORDERHORI);
         player_obstacle.collision_chk(Oshayer.body,S_STONE);
+        player_obstacle.collision_chk(Oshayer.body, S_BORDER);
+        player_obstacle.collision_chk(Oshayer.body, S_BORDERHORI);
+        player_obstacle.collision_chk(Drago.enemyBody, S_STONE);
+        player_obstacle.collision_chk(Drago.enemyBody, S_BORDER);
+        player_obstacle.collision_chk(Drago.enemyBody, S_BORDERHORI);
+
+        //player_obstacle.collision_chk_rectangle(Oshayer.border, S_STONE);
+        //player_obstacle.collision_chk_rectangle(Oshayer.border, S_BORDER);
+
+
 
 
 

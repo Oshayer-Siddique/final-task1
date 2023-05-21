@@ -112,6 +112,9 @@ int main()
     Texture spelltexture;
     spelltexture.loadFromFile("spellcast_red.png");
 
+    Texture fireballTexture;
+    fireballTexture.loadFromFile("fireball.png");
+
 
     
     
@@ -256,7 +259,10 @@ int main()
                             dragonTexture,
                             firetexture,
                             greenfire,
-                            spelltexture
+                            spelltexture,
+                            fireballTexture
+                            
+                            
                             
                             
                             
@@ -401,7 +407,8 @@ int main()
                                 dragonTexture,
                                 firetexture,
                                 greenfire,
-                                spelltexture
+                                spelltexture,
+                                fireballTexture
 
 
 

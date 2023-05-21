@@ -6,7 +6,7 @@
 class Enemy
 {
 public:
-	Enemy(Texture* texture, Vector2u imageCount, float sitchTime, float speed);
+	Enemy(Texture* texture, Vector2u imageCount, float sitchTime, float speed,float x,float y);
 
 	void Update_enemy_movement(Texture& texture, float deltaTime,Sprite& Target);
 
@@ -28,6 +28,7 @@ private:
 	Vector2f enemyVelocity;
 	Vector2f normalize;
 
+	RectangleShape border;
 
 
 };

@@ -1,18 +1,27 @@
 #include "Enemy.h"
 #include "Hero.h"
 
-Enemy::Enemy(Texture* texture, Vector2u imageCount, float switchTime, float speed) :
+Enemy::Enemy(Texture* texture, Vector2u imageCount, float switchTime, float speed,float x, float y) :
 	enemy_animation(texture,imageCount,switchTime)
 
 {
 	this->speed = speed;
 	row = 0;
 	enemyBody.setTexture(*texture);
-	enemyBody.setPosition(0, 0);
+	enemyBody.setPosition(x,y);
+
+
+
+	border.setFillColor(sf::Color::Transparent);
+	border.setOutlineThickness(2.0f);
+	border.setOutlineColor(sf::Color::Red);
 
 }
 
 void Enemy::Update_enemy_movement(Texture& texture, float deltaTime, Sprite& Target) {
+
+	border.setSize(Vector2f(enemyBody.getGlobalBounds().width,enemyBody.getGlobalBounds().height));
+	border.setPosition(enemyBody.getPosition().x, enemyBody.getPosition().y);
 
 	float x = Target.getPosition().x;
 	float y = Target.getPosition().y;
@@ -72,4 +81,5 @@ void Enemy::Update_enemy_movement(Texture& texture, float deltaTime, Sprite& Tar
 
 void Enemy::Draw(RenderWindow& window) {
 	window.draw(enemyBody);
+	window.draw(border);
 }
