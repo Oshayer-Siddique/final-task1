@@ -4,6 +4,7 @@
 #include "Animation.h"
 #include<iostream>
 #include<vector>
+#include <sstream>
 using namespace std;
 using namespace sf;
 
@@ -17,6 +18,11 @@ public:
 
 	void special_movement(Texture& texture, float deltaTime, float speed);
 
+	void Update_death(Texture& texture, float deltaTime, float speed);
+
+
+	float Maxhp;
+	float currenthp;
 
 
 	
@@ -27,11 +33,14 @@ public:
 
 	void Draw(RenderWindow& window);
 
+	
+
 	//int Health(Sprite& A , Sprite& B);
 	Sprite body;
 
-	int Total_HP = 5000;
-	int current_hp = 10;
+	
+	RectangleShape hpbox;
+
 
 	RectangleShape border;
 
@@ -47,6 +56,8 @@ private:
 	float distance;
 
 	float speed;
+
+	stringstream ss1,ss2;
 
 
 

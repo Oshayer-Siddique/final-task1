@@ -1,4 +1,6 @@
 #include "Hero.h"
+#include "collision.h"
+
 
 Hero::Hero(Texture* texture, Vector2u imageCount, float switchTime,float x, float y):
 	animation(texture,imageCount,switchTime)
@@ -38,13 +40,17 @@ void Hero::Update_Clock(Texture& texture, float deltaTime, float speed) {
     elapsed += clk.restart();
     if (!powerGenerate && elapsed >= interval) {
         powerGenerate = true;
-        //cout << "Generated" << endl;
+       
+        ss1 << "RUN";
         
     }
         if (powerGenerate == true && elapsed >= interval + seconds(0.5)) {
             powerGenerate = false;
             elapsed = milliseconds(0);
+            
+            ss2 << "walk";
         }
+
 
  }
 
@@ -399,6 +405,14 @@ void Hero::prize_hijack(RenderWindow& window, Sprite& c_prize) {
 //
 //
 //}
+
+
+void Hero::Update_death(Texture& texture, float deltaTime, float speed) {
+    animation.Update(12, deltaTime);
+
+    body.setTextureRect(animation.uvRect);
+
+}
 
 
 

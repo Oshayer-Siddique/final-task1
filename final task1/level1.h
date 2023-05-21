@@ -67,7 +67,14 @@ int level1(Sprite& backg,
     prize crown(700, 700, c_prize);
 
     
+    float w;
+    w = 100;
 
+    float dh;
+    dh = 95;
+
+
+    
 
 
     Animation animation(&heroTexture, Vector2u(4, 4), 0.1f);
@@ -79,7 +86,7 @@ int level1(Sprite& backg,
 
 
 
-    Hero Oshayer(&heroTexture, Vector2u(7, 12), 0.1f,50,0);
+    Hero Oshayer(&heroTexture, Vector2u(7, 13), 0.1f,50,0);
     Enemy Drago(&dragonTexture, Vector2u(3, 4), 0.1f, 100,1500,0);
     Hazard dangerfire(&firetexture, Vector2u(9, 1), 0.1f, 100, 1000, 500);
     Hazard G_greenfire(&greenfire, Vector2u(8, 1), 0.1f, 100, 800, 500);
@@ -193,14 +200,53 @@ int level1(Sprite& backg,
         G_greenfire.Update_hazard(greenfire, deltaTime);
         G_greenfire.Draw(window);                              
 
+        
 
-        RectangleShape healthbar(Vector2f(20,100));
+        RectangleShape healthbar_player(Vector2f(w, 10));
 
-        healthbar.setFillColor(Color::Green);
+        healthbar_player.setFillColor(Color::Green);
 
-        healthbar.setPosition(1750, 50);
+        healthbar_player.setPosition(Oshayer.body.getPosition());
 
-        window.draw(healthbar);
+        if (player_obstacle.collision_chk_S(Oshayer.body, dragonfire.spell_sprite)) {
+
+            w -= 0.3;
+
+            if (w <= 0) {
+                w = 0;
+                Oshayer.Update_death(heroTexture,deltaTime,100);
+                break;
+            }
+                
+
+
+
+        }
+
+        window.draw(healthbar_player);
+
+
+        RectangleShape healthbar_dragon(Vector2f(dh, 10));
+
+        healthbar_dragon.setFillColor(Color::Red);
+        healthbar_dragon.setPosition(Drago.enemyBody.getPosition());
+
+        if (player_obstacle.collision_chk_S(Drago.enemyBody, G_redSpell.spell_sprite)) {
+            dh -= 0.1;
+            if (dh <= 0) {
+                dh = 0;
+                Drago.enemyBody.setPosition(-5000,-5000);
+            }
+        }
+
+        window.draw(healthbar_dragon);
+        
+
+
+
+        
+
+        
 
         //Oshayer.collider(S_STONE);
 

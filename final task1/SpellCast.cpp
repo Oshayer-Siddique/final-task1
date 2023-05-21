@@ -15,7 +15,7 @@ void SpellCast::Shoot(RenderWindow& window, float deltaTime, Sprite& shooter, Sp
 
 
 	if (Keyboard::isKeyPressed(Keyboard::Space)) {
-		spell_sprite.setPosition(u, v);
+		spell_sprite.setPosition(u+25, v+25);
 		velocityX = 500;
 		spellVelocity = Vector2f(x - u, y - v);
 
@@ -66,12 +66,12 @@ void SpellCast::spellTimer() {
 
 	if (!power && elapsedtime >= intervaltime) {
 		power = true;
-		cout << 1 << endl;
+		//cout << 1 << endl;
 	}
 	if (power == true && elapsedtime >= intervaltime + seconds(0.25)) {
 		power = false;
 		elapsedtime = milliseconds(0);
-		cout << 0 << endl;
+		//cout << 0 << endl;
 
 	}
 }
