@@ -83,9 +83,6 @@
     <ClInclude Include="mainmenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="SpellCast.h">
       <Filter>Header Files</Filter>
     </ClInclude>

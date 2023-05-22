@@ -115,6 +115,12 @@ int main()
     Texture fireballTexture;
     fireballTexture.loadFromFile("fireball.png");
 
+    Texture SkeletonTexture;
+    SkeletonTexture.loadFromFile("Skeleton Movement.png");
+
+       
+       
+
 
     
     
@@ -260,7 +266,8 @@ int main()
                             firetexture,
                             greenfire,
                             spelltexture,
-                            fireballTexture
+                            fireballTexture,
+                            SkeletonTexture
                             
                             
                             
@@ -408,7 +415,8 @@ int main()
                                 firetexture,
                                 greenfire,
                                 spelltexture,
-                                fireballTexture
+                                fireballTexture,
+                                SkeletonTexture
 
 
 

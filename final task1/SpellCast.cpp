@@ -42,7 +42,7 @@ void SpellCast::Shoot_hero(RenderWindow& window, float deltaTime, Sprite& shoote
 
 
 	if (power == true) {
-		spell_sprite.setPosition(u, v);
+		spell_sprite.setPosition(u+20, v+25);
 		velocityX = 500;
 		spellVelocity = Vector2f(x - u, y - v);
 

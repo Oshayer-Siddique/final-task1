@@ -34,7 +34,8 @@ int level1(Sprite& backg,
     Texture& firetexture,
     Texture& greenfire,
     Texture& spelltexture,
-    Texture& fireballTexture
+    Texture& fireballTexture,
+    Texture& SkeletonTexture
 )
 {
 
@@ -71,7 +72,7 @@ int level1(Sprite& backg,
     w = 100;
 
     float dh;
-    dh = 95;
+    dh = 90;
 
 
     
@@ -88,6 +89,7 @@ int level1(Sprite& backg,
 
     Hero Oshayer(&heroTexture, Vector2u(7, 13), 0.1f,50,0);
     Enemy Drago(&dragonTexture, Vector2u(3, 4), 0.1f, 100,1500,0);
+    Enemy SKELETON(&SkeletonTexture,Vector2u(9,4),0.1f,70,70,900);
     Hazard dangerfire(&firetexture, Vector2u(9, 1), 0.1f, 100, 1000, 500);
     Hazard G_greenfire(&greenfire, Vector2u(8, 1), 0.1f, 100, 800, 500);
 
@@ -193,6 +195,17 @@ int level1(Sprite& backg,
         Drago.Update_enemy_movement(dragonTexture, deltaTime, Oshayer.body);
         Drago.Draw(window);
 
+        //if (Oshayer.body.getPosition().x < 800) {
+        //    SKELETON.Update_ground_enemy_movement(SkeletonTexture, deltaTime, Oshayer.body);
+        //    
+
+        //}
+
+        SKELETON.Update_ground_enemy_movement(SkeletonTexture, deltaTime, Oshayer.body,500);
+        SKELETON.Draw(window);
+        
+        
+
 
         dangerfire.Update_hazard(firetexture, deltaTime);
         dangerfire.Draw(window);
@@ -220,6 +233,15 @@ int level1(Sprite& backg,
                 
 
 
+
+        }
+
+        else if (player_obstacle.collision_chk_S(Oshayer.body,SKELETON.enemyBody)) {
+            w -= 0.03;
+            if (w <= 0) {
+                w = 0;
+                break;
+            }
 
         }
 
@@ -261,6 +283,7 @@ int level1(Sprite& backg,
         player_obstacle.collision_chk(Drago.enemyBody, S_STONE);
         player_obstacle.collision_chk(Drago.enemyBody, S_BORDER);
         player_obstacle.collision_chk(Drago.enemyBody, S_BORDERHORI);
+        player_obstacle.collision_chk(SKELETON.enemyBody,S_STONE);
 
         //player_obstacle.collision_chk_rectangle(Oshayer.border, S_STONE);
         //player_obstacle.collision_chk_rectangle(Oshayer.border, S_BORDER);

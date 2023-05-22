@@ -6,9 +6,11 @@
 class Enemy
 {
 public:
-	Enemy(Texture* texture, Vector2u imageCount, float sitchTime, float speed,float x,float y);
+	Enemy(Texture* texture, Vector2u imageCount, float switchTime, float speed,float x,float y);
 
 	void Update_enemy_movement(Texture& texture, float deltaTime,Sprite& Target);
+
+	void Update_ground_enemy_movement(Texture& texture, float deltaTime, Sprite& Target,float range);
 
 
 	void Draw(RenderWindow& window);
