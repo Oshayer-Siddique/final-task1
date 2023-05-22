@@ -128,3 +128,78 @@ void MainMenu::drawlevel(RenderWindow& levels)
 		levels.draw(mainMenu[i]);
 	}
 }
+
+
+void MainMenu::mousePressed(RenderWindow& window)
+{
+	Vector2f mousePos = window.mapPixelToCoords(Mouse::getPosition(window));
+	FloatRect menu1 = mainMenu[0].getGlobalBounds();
+	FloatRect menu2 = mainMenu[1].getGlobalBounds();
+	FloatRect menu3 = mainMenu[2].getGlobalBounds();
+	FloatRect menu4 = mainMenu[3].getGlobalBounds();
+	//mouseselected = -1;
+	if (menu1.contains(mousePos))
+	{
+		Color current = mainMenu[0].getFillColor();
+		mainMenu[0].setFillColor(Color::Color(178, 34, 34));
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+
+			mouseselected = 0;
+			cout << "         " << mouseselected;
+		}
+		//if (current != Color::Red)
+		//	menusound.play();
+	}
+	else
+	{
+		mainMenu[0].setFillColor(Color::Color(255, 222, 173));
+	}
+	if (menu2.contains(mousePos))
+	{
+		Color current = mainMenu[0].getFillColor();
+		mainMenu[1].setFillColor(Color::Color(178, 34, 34));
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			mouseselected = 1;
+			cout << "         " << mouseselected;
+		}
+		//if (current != Color::Red)
+		//	menusound.play();
+	}
+	else
+	{
+		mainMenu[1].setFillColor(Color::Color(255, 222, 173));
+	}
+	if (menu3.contains(mousePos))
+	{
+		Color current = mainMenu[1].getFillColor();
+		mainMenu[2].setFillColor(Color::Color(178, 34, 34));
+		if (Mouse::isButtonPressed(Mouse::Left))
+			mouseselected = 2;
+		//if (current != Color::Red)
+		//	menusound.play();
+
+	}
+	else
+	{
+		mainMenu[2].setFillColor(Color::Color(255, 222, 173));
+	}
+	if (menu4.contains(mousePos))
+	{
+		Color current = mainMenu[2].getFillColor();
+		mainMenu[3].setFillColor(Color::Color(178, 34, 34));
+		if (Mouse::isButtonPressed(Mouse::Left))
+			mouseselected = 3;
+
+
+		//if (current != Color::Red)
+		//	menusound.play();
+	}
+	else
+	{
+		mainMenu[3].setFillColor(Color::Color(255, 222, 173));
+	}
+
+
+}

@@ -48,15 +48,6 @@
     <ClCompile Include="mainmenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpellCast.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="obstacle2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="obstacle3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="prize.h">
@@ -89,20 +80,8 @@
     <ClInclude Include="mainmenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpellCast.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="level1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="level.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="level2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="level3.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Header.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -19,9 +19,16 @@ public:
 	void drawlevel(RenderWindow& levels);
 	int selectmenu(MainMenu mainmenu, Sprite& backmenu);
 	Text mainMenu[menufunctions];
+	void mousePressed(RenderWindow& window);
+
+	   
 
 	int MainMenuPressed() {
 		return MainMenuSelected;
+	}
+
+	int mousepress() {
+		return mouseselected;
 	}
 
 	MainMenu(float menuwidth, float menuheight);
@@ -32,6 +39,7 @@ private:
 	int MainMenuSelected;
 	int levelmenuSelected;
 	Font font;
+	int mouseselected;
 
 };
 

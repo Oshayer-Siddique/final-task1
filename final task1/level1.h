@@ -20,6 +20,10 @@ int level1(Sprite& backg,
     Sprite& fire_sprite,
     Texture& stonetex,
     Texture& stonerevtex,
+    Texture& stone2tex,
+    Texture& stone2revtex,
+    Texture& stone3tex,
+    Texture& stone3revtex,
     Texture& watertex,
     Texture& bordertex,
     Texture& borderhoritex,
@@ -29,30 +33,33 @@ int level1(Sprite& backg,
     Texture& doorrevtex,
     Texture& chesttex,
     Texture& openchesttex,
+    Texture& torchtex,
+    Texture& fireanime,
     Texture& heroTexture,
     Texture& dragonTexture,
     Texture& firetexture,
-    Texture& greenfire,
     Texture& spelltexture,
     Texture& fireballTexture,
-    Texture& SkeletonTexture
-)
+    Texture& SkeletonTexture)
+
+
+
 {
+
+    Clock clock;
+float deltaTime = 0;
+
 
 	//Sprite stone, water, border, borderhori, door, chest, openchest;
 
 
-    float deltaTime = 0;
-    Clock clock;
-
-
-
-
-
-	Set_obstacle G_LEVEL1(50);
+    Set_obstacle G_LEVEL1(50);
 
 	vector<Sprite>S_WATER(50);
 	vector<Sprite>S_STONE(50);
+	vector<Sprite>S_STONE2(50);
+	vector<Sprite>S_STONE3(50);
+
 
 
 	vector<Sprite>S_BORDER(50);
@@ -60,6 +67,29 @@ int level1(Sprite& backg,
 
 	vector<Sprite>S_DOOR(50);
 	vector<Sprite>S_CHEST(50);
+	vector<Sprite>S_OPENCHEST(50);
+
+	
+	Hazard lightlamp(&torchtex, Vector2u(3, 2), 0.3f, 100, 1750, 920);
+	Hazard lightlamp1(&torchtex, Vector2u(3, 2), 0.3f, 100, 910, 180);
+	Hazard lightlamp2(&torchtex, Vector2u(3, 2), 0.3f, 100, 910, 370);
+	Hazard lightlamp3(&torchtex, Vector2u(3, 2), 0.3f, 100, 400, 340);
+	Hazard lightlamp4(&torchtex, Vector2u(3, 2), 0.3f, 100, 400, 835);
+	Hazard lightlamp5(&torchtex, Vector2u(3, 2), 0.3f, 100, 13, 35);
+	Hazard lightlamp6(&torchtex, Vector2u(3, 2), 0.3f, 100, 13, 920);
+	Hazard lightlamp7(&torchtex, Vector2u(3, 2), 0.3f, 100, 1750, 35);
+
+	
+	
+	Hazard FireAnime(&fireanime, Vector2u(8, 1), 0.1f, 100, 134, 376);
+	Hazard FireAnime1(&fireanime, Vector2u(8, 1), 0.1f, 100, 134, 460);
+	Hazard FireAnime2(&fireanime, Vector2u(8, 1), 0.1f, 100, 134, 582);
+	Hazard FireAnime3(&fireanime, Vector2u(8, 1), 0.1f, 100, 70, 376);
+	Hazard FireAnime4(&fireanime, Vector2u(8, 1), 0.1f, 100, 70, 460);
+	Hazard FireAnime5(&fireanime, Vector2u(8, 1), 0.1f, 100, 70, 582);
+	Hazard FireAnime6(&fireanime, Vector2u(8, 1), 0.1f, 100, 70, 704);
+	Hazard FireAnime7(&fireanime, Vector2u(8, 1), 0.1f, 100, 134, 704);
+
 
 
     Collision player_obstacle;
@@ -90,8 +120,8 @@ int level1(Sprite& backg,
     Hero Oshayer(&heroTexture, Vector2u(7, 13), 0.1f,50,0);
     Enemy Drago(&dragonTexture, Vector2u(3, 4), 0.1f, 100,1500,0);
     Enemy SKELETON(&SkeletonTexture,Vector2u(9,4),0.1f,70,70,900);
-    Hazard dangerfire(&firetexture, Vector2u(9, 1), 0.1f, 100, 1000, 500);
-    Hazard G_greenfire(&greenfire, Vector2u(8, 1), 0.1f, 100, 800, 500);
+    //Hazard dangerfire(&firetexture, Vector2u(9, 1), 0.1f, 100, 1000, 500);
+    //Hazard G_greenfire(&greenfire, Vector2u(8, 1), 0.1f, 100, 800, 500);
 
     SpellCast G_redSpell(spelltexture);
 
@@ -121,10 +151,72 @@ int level1(Sprite& backg,
 
         window.clear();
         window.draw(backg);
+
+
+
+
+
+
+
+
+
         G_LEVEL1.set_borber(window, S_BORDER, bordertex);
         G_LEVEL1.set_borderhori(window, S_BORDERHORI, borderhoritex);
         G_LEVEL1.set_door(window, S_DOOR, doortex, doorrevtex);
-        G_LEVEL1.set_stone(window, S_STONE, stonetex);
+        G_LEVEL1.set_stone(window, S_STONE, stonetex, stonerevtex);
+        G_LEVEL1.set_stonetwo(window, S_STONE2, stone2tex, stone2revtex);
+        G_LEVEL1.set_stonethree(window, S_STONE3, stone3tex, stone3revtex);
+        G_LEVEL1.set_chest(window, S_CHEST, chesttex);
+        G_LEVEL1.set_openchest(window, S_OPENCHEST, openchesttex);
+        G_LEVEL1.set_water(window, S_WATER, watertex);
+
+
+
+
+
+
+
+
+
+
+        lightlamp1.Update_hazard(torchtex, deltaTime);
+        lightlamp1.Draw(window);
+        lightlamp2.Update_hazard(torchtex, deltaTime);
+        lightlamp2.Draw(window);
+        lightlamp3.Update_hazard(torchtex, deltaTime);
+        lightlamp3.Draw(window);
+        lightlamp4.Update_hazard(torchtex, deltaTime);
+        lightlamp4.Draw(window);
+        lightlamp.Update_hazard(torchtex, deltaTime);
+        lightlamp.Draw(window);
+        lightlamp5.Update_hazard(torchtex, deltaTime);
+        lightlamp5.Draw(window);
+        lightlamp6.Update_hazard(torchtex, deltaTime);
+        lightlamp6.Draw(window);
+        lightlamp7.Update_hazard(torchtex, deltaTime);
+        lightlamp7.Draw(window);
+
+
+
+
+
+
+        FireAnime.Update_hazard(fireanime, deltaTime);
+        FireAnime.Draw(window);
+        FireAnime1.Update_hazard(fireanime, deltaTime);
+        FireAnime1.Draw(window);
+        FireAnime2.Update_hazard(fireanime, deltaTime);
+        FireAnime2.Draw(window);
+        FireAnime3.Update_hazard(fireanime, deltaTime);
+        FireAnime3.Draw(window);
+        FireAnime4.Update_hazard(fireanime, deltaTime);
+        FireAnime4.Draw(window);
+        FireAnime5.Update_hazard(fireanime, deltaTime);
+        FireAnime5.Draw(window);
+        FireAnime6.Update_hazard(fireanime, deltaTime);
+        FireAnime6.Draw(window);
+        FireAnime7.Update_hazard(fireanime, deltaTime);
+        FireAnime7.Draw(window);
 
 
         /* -------------------------------------------------------------------------- */
@@ -206,12 +298,12 @@ int level1(Sprite& backg,
         
         
 
-
+/*
         dangerfire.Update_hazard(firetexture, deltaTime);
         dangerfire.Draw(window);
 
         G_greenfire.Update_hazard(greenfire, deltaTime);
-        G_greenfire.Draw(window);                              
+        G_greenfire.Draw(window);    */                          
 
         
 
@@ -285,6 +377,15 @@ int level1(Sprite& backg,
         player_obstacle.collision_chk(Drago.enemyBody, S_BORDERHORI);
         player_obstacle.collision_chk(SKELETON.enemyBody,S_STONE);
 
+
+        player_obstacle.collision_chk(Oshayer.body, S_STONE2);
+        player_obstacle.collision_chk(Drago.enemyBody, S_STONE2);
+       player_obstacle.collision_chk(SKELETON.enemyBody, S_STONE2);
+       player_obstacle.collision_chk(Oshayer.body, S_STONE3);
+       
+        player_obstacle.collision_chk(Drago.enemyBody, S_STONE3);
+       
+        player_obstacle.collision_chk(SKELETON.enemyBody, S_STONE3);
         //player_obstacle.collision_chk_rectangle(Oshayer.border, S_STONE);
         //player_obstacle.collision_chk_rectangle(Oshayer.border, S_BORDER);
 

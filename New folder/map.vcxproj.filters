@@ -9,46 +9,31 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Header Files\Resource Files">
+    <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="prize.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="collision.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="obstacle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="material.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="hazard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Hero.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimationNew.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
+    <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mainmenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpellCast.cpp">
+    <ClCompile Include="leveltransfer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="obstacle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="collision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="hazard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="obstacle2.cpp">
@@ -57,39 +42,15 @@
     <ClCompile Include="obstacle3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="obstacle4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="prize.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="collision.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="obstacle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="material.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="hazard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Hero.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimationNew.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
+    <ClInclude Include="map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mainmenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpellCast.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="level1.h">
@@ -98,10 +59,25 @@
     <ClInclude Include="level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="obstacle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hazard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="level2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="level3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="level4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

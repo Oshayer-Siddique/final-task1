@@ -14,13 +14,16 @@ void Set_obstacle::set_water(RenderWindow& window, vector<Sprite>& S_WATER, Text
 		S_WATER[i].setTexture(watertex);
 	}
 
-	S_WATER[0].setPosition(1000, 200);
-	S_WATER[1].setPosition(1100, 300);
+	S_WATER[0].setPosition(1200, 600);
+	S_WATER[1].setPosition(950, 600);
 
 
-	for (int i = 0;i < 2;i++) {
-		window.draw(S_WATER[i]);
-	}
+	S_WATER[0].setColor(Color(255, 255, 255, 58));
+	S_WATER[1].setColor(Color(255, 255, 255, 58));
+
+	window.draw(S_WATER[0]);
+	window.draw(S_WATER[1]);
+
 
 
 }
@@ -67,7 +70,7 @@ void Set_obstacle::set_door(RenderWindow& window, vector<Sprite>& S_DOOR, Textur
 	S_DOOR[1].setTexture(doorrevtex);
 
 	S_DOOR[1].setPosition(100, 0);
-	S_DOOR[0].setPosition(1670, 890);
+	S_DOOR[0].setPosition(1600, 890);
 
 
 	for (int i = 0;i < 2;i++) {
@@ -82,8 +85,8 @@ void Set_obstacle::set_chest(RenderWindow& window, vector<Sprite>& S_CHEST, Text
 		S_CHEST[i].setTexture(chesttex);
 	}
 
-	S_CHEST[0].setPosition(1000, 200);
-	S_CHEST[1].setPosition(1100, 300);
+	S_CHEST[0].setPosition(400, 900);
+	S_CHEST[1].setPosition(1255, 270);
 
 
 	for (int i = 0;i < 2;i++) {
@@ -98,8 +101,8 @@ void Set_obstacle::set_openchest(RenderWindow& window, vector<Sprite>& S_OPENCHE
 		S_OPENCHEST[i].setTexture(openchesttex);
 	}
 
-	S_OPENCHEST[0].setPosition(1000, 200);
-	S_OPENCHEST[1].setPosition(1100, 300);
+	S_OPENCHEST[0].setPosition(390, 880);
+	S_OPENCHEST[1].setPosition(1250, 250);
 
 
 	for (int i = 0;i < 2;i++) {
@@ -109,57 +112,119 @@ void Set_obstacle::set_openchest(RenderWindow& window, vector<Sprite>& S_OPENCHE
 
 
 
-void Set_obstacle::set_stone(RenderWindow& window, vector<Sprite>& S_STONE, Texture& stonetex) {
-
+void Set_obstacle::set_stone(RenderWindow& window, vector<Sprite>& S_STONE, Texture& stonetex, Texture& stonerevtex) {
 
 	for (int i = 0; i < 25; i++) {
 		S_STONE[i].setTexture(stonetex);
 	}
-	/*for (int i = 25; i < 50; i++) {
+	for (int i = 25; i < 50; i++) {
 		S_STONE[i].setTexture(stonerevtex);
-	}*/
+	}
 
 
 
 
-	S_STONE[0].setPosition(900, 170);
-	S_STONE[1].setPosition(1050, 170);
-	S_STONE[2].setPosition(1200, 170);
-	S_STONE[3].setPosition(1350, 170);
-	S_STONE[4].setPosition(1500, 170);
-	S_STONE[5].setPosition(900, 220);
-	S_STONE[6].setPosition(1050, 220);
-	S_STONE[7].setPosition(900, 270);
-	S_STONE[8].setPosition(1050, 270);
-	S_STONE[9].setPosition(900, 320);
-	S_STONE[10].setPosition(1050, 320);
-	S_STONE[11].setPosition(1200, 320);
-	S_STONE[12].setPosition(1500, 320);
 
-	S_STONE[13].setPosition(0, 825);
-	S_STONE[14].setPosition(0, 335);
-	S_STONE[15].setPosition(150, 825);
-	S_STONE[16].setPosition(150, 335);
-	S_STONE[17].setPosition(150, 825);
-	S_STONE[18].setPosition(150, 335);
-	S_STONE[19].setPosition(300, 825);
-	S_STONE[20].setPosition(300, 335);
+	S_STONE[0].setPosition(1500, 370);
 
-	/*S_STONE[25].setPosition(0, 525);
-	S_STONE[28].setPosition(0, 475);
-	S_STONE[26].setPosition(0, 675);
+	//S_STONE[22].setColor(sf::Color(255, 255, 255, 128));
+
+
+
+
+
+	S_STONE[25].setPosition(20, 525);
+	S_STONE[28].setPosition(20, 475);
+	S_STONE[26].setPosition(20, 675);
 	S_STONE[27].setPosition(400, 555);
 	S_STONE[29].setPosition(400, 515);
-	S_STONE[29].setPosition(0, 335);*/
+	S_STONE[27].setPosition(420, 555);
+	S_STONE[29].setPosition(420, 515);
+	S_STONE[30].setPosition(20, 335);
 
 
-	for (int i = 0;i < 20;i++) {
+	for (int i = 0;i < 1;i++) {
 		window.draw(S_STONE[i]);
 	}
-	for (int i = 20;i < 21;i++) {
+
+	for (int i = 25;i < 31;i++) {
 		window.draw(S_STONE[i]);
 	}
-	/*for (int i = 25;i < 30;i++) {
-		window.draw(S_STONE[i]);
-	}*/
+}
+void Set_obstacle::set_stonetwo(RenderWindow& window, vector<Sprite>& S_STONE2, Texture& stone2tex, Texture& stonerev2tex) {
+
+
+	for (int i = 0; i < 4; i++) {
+		S_STONE2[i].setTexture(stone2tex);
+	}
+	//for (int i = 25; i < 50; i++) {
+	//	S_STONE2[i].setTexture(stonerev2tex);
+	//}
+
+
+
+
+	S_STONE2[0].setPosition(900, 170);
+	S_STONE2[1].setPosition(900, 220);
+	S_STONE2[2].setPosition(900, 270);
+	S_STONE2[3].setPosition(900, 320);
+	//S_STONE[22].setColor(sf::Color(255, 255, 255, 128));
+
+
+
+
+
+
+	for (int i = 0;i < 4;i++) {
+		window.draw(S_STONE2[i]);
+	}
+	//for (int i = 20;i < 23;i++) {
+	//	window.draw(S_STONE2[i]);
+	//}
+	//for (int i = 25;i < 31;i++) {
+	//	window.draw(S_STONE2[i]);
+	//}
+}
+
+
+
+
+
+
+void Set_obstacle::set_stonethree(RenderWindow& window, vector<Sprite>& S_STONE3, Texture& stone3tex, Texture& stonerev3tex) {
+
+
+	for (int i = 0; i < 4; i++) {
+		S_STONE3[i].setTexture(stone3tex);
+	}
+	//for (int i = 25; i < 50; i++) {
+	//	S_STONE3[i].setTexture(stonerev3tex);
+	//}
+
+
+
+
+	S_STONE3[0].setPosition(1200, 170);
+	S_STONE3[1].setPosition(900, 370);
+
+
+	//S_STONE[22].setColor(sf::Color(255, 255, 255, 128));
+
+
+
+	S_STONE3[2].setPosition(20, 825);
+	S_STONE3[3].setPosition(20, 335);
+
+
+
+
+	for (int i = 0;i < 4;i++) {
+		window.draw(S_STONE3[i]);
+	}
+	//for (int i = 20;i < 23;i++) {
+	//	window.draw(S_STONE3[i]);
+	//}
+	//for (int i = 25;i < 31;i++) {
+	//	window.draw(S_STONE3[i]);
+	//}
 }
