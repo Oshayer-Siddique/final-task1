@@ -23,6 +23,7 @@
 #include<SFML/System.hpp>
 #include<SFML/Window.hpp>
 #include<SFML/Audio.hpp>
+#include"level4.h"
 using namespace sf;
 using namespace std;
 
@@ -31,7 +32,7 @@ int main()
 
     float width = 1800;
     float height = 1000;
-    int l;
+    int l,p;
 
     Font fnt;
     fnt.loadFromFile("F:/SFML Projects/final task1/New folder/rockb.ttf");
@@ -44,7 +45,7 @@ int main()
         background2,
         background3,
         background4,
-        stonetex,stonerevtex,
+        stonetex, stonerevtex,
         stone2tex,
         stone2revtex,
         stone3tex,
@@ -63,11 +64,12 @@ int main()
         torchtex,
         torch2tex,
         torch3tex,
+        torch4tex,
         fireanime,
         fire2anime,
-        cointex;   
-    
-    Sprite backg,back2g,back3g,back4g, backmenu, crespr;
+        cointex;
+
+    Sprite backg, back2g, back3g, back4g, backmenu, crespr;
 
     if (!stonetex.loadFromFile("F:/SFML Projects/final task1/New folder/block.png")) {}
     if (!stonerevtex.loadFromFile("F:/SFML Projects/final task1/New folder/blockrev.png")) {}
@@ -88,7 +90,9 @@ int main()
     if (!openchesttex.loadFromFile("F:/SFML Projects/final task1/New folder/chest1.png")) {}
     if (!torchtex.loadFromFile("F:/SFML Projects/final task1/New folder/Torch_Sheet.png")) {}
     if (!torch2tex.loadFromFile("F:/SFML Projects/final task1/New folder/Torch_Sheet_Green.png")) {}
-    if (!torch2tex.loadFromFile("F:/SFML Projects/final task1/New folder/TorchType4.png")) {}
+    if (!torch3tex.loadFromFile("F:/SFML Projects/final task1/New folder/TorchType4.png")) {}
+    if (!torch4tex.loadFromFile("F:/SFML Projects/final task1/New folder/TorchLevel4.png")) {}
+
     if (!fireanime.loadFromFile("F:/SFML Projects/final task1/New folder/fireanime.png")) {}
     if (!fire2anime.loadFromFile("F:/SFML Projects/final task1/New folder/green_fire.png")) {}
     if (!cointex.loadFromFile("F:/SFML Projects/final task1/New folder/coin.png")) {}
@@ -107,13 +111,14 @@ int main()
     back2g.setTexture(background2);
     if (!background3.loadFromFile("F:/SFML Projects/final task1/New folder/background3.png")) {}
     back3g.setTexture(background3);
-
+    if (!background4.loadFromFile("F:/SFML Projects/final task1/New folder/background4.jpg")) {}
+    back4g.setTexture(background4);
 
 
     Font font;
-    
-    
-    
+
+
+
 
     /* -------------------------------------------------------------------------- */
     /*                                SETTING BACKGROUND                          */
@@ -128,7 +133,7 @@ int main()
 
 
 
-    
+
 
     /* -------------------------------------------------------------------------- */
     /*                                LOADING TEXTURE                             */
@@ -178,37 +183,37 @@ int main()
     Texture SkeletonTexture;
     SkeletonTexture.loadFromFile("Skeleton Movement.png");
 
-       
-       
-
-
-    
-    
-
-   /* Texture hero_fightTexture;
-    hero_fightTexture.loadFromFile("hero_fight.png");*/
 
 
 
 
 
 
-    
 
-   
-
-    
-    //Clock clock;
-    //float deltaTime;
+    /* Texture hero_fightTexture;
+     hero_fightTexture.loadFromFile("hero_fight.png");*/
 
 
 
-    
-    /* -------------------------------------------------------------------------- */
-    /*                                DECLEARING OBSTACLE                         */
-    /* -------------------------------------------------------------------------- */
-    //vector<Sprite>S_TREE(50);
-    //vector<Sprite>S_STONE(50);
+
+
+
+
+
+
+
+
+     //Clock clock;
+     //float deltaTime;
+
+
+
+
+     /* -------------------------------------------------------------------------- */
+     /*                                DECLEARING OBSTACLE                         */
+     /* -------------------------------------------------------------------------- */
+     //vector<Sprite>S_TREE(50);
+     //vector<Sprite>S_STONE(50);
     Sprite fire_sprite;
 
 
@@ -221,7 +226,7 @@ int main()
     /* -------------------------------------------------------------------------- */
  /*   Set_obstacle G_TREE(50);
     Set_obstacle G_STONE(50);*/
-    
+
 
 
 
@@ -229,7 +234,7 @@ int main()
     /*                                DECLEARING MATERIAL                         */
     /* -------------------------------------------------------------------------- */
     Sprite A;
-    Sprite c_prize1,c_prize2;
+    Sprite c_prize1, c_prize2;
 
     /* -------------------------------------------------------------------------- */
     /*                                MATERIAL OBJECTS                            */
@@ -244,14 +249,14 @@ int main()
     /* -------------------------------------------------------------------------- */
     /*                               PLAYER INFORMATION                           */
     /* -------------------------------------------------------------------------- */
-    
 
 
 
-    
 
 
-   
+
+
+
 
     //Hero Oshayer1(&hero_fightTexture,Vector2u(4,4),0.1,100);
 
@@ -285,7 +290,7 @@ int main()
 
             mainmenu.mousePressed(menu);
 
-            if (menuevent.type == Event::KeyReleased|| Mouse::isButtonPressed(Mouse::Left))
+            if (menuevent.type == Event::KeyReleased || Mouse::isButtonPressed(Mouse::Left))
             {
 
                 if (menuevent.key.code == Keyboard::Up)
@@ -308,7 +313,7 @@ int main()
                 {
                     int x = mainmenu.MainMenuPressed();
                     int y = mainmenu.mousepress();
-                    if (x == 0|| y==0)
+                    if (x == 0 || y == 0)
                     {
                         l = level1(backg,
                             c_prize1,
@@ -330,7 +335,7 @@ int main()
                             doorrevtex,
                             chesttex,
                             openchesttex,
-                             torchtex,
+                            torchtex,
                             fireanime,
                             heroTexture,
                             dragonTexture,
@@ -338,12 +343,12 @@ int main()
                             spelltexture,
                             fireballTexture,
                             SkeletonTexture
-                            
-                            
-                            
-                            
-                            
-                            );
+
+
+
+
+
+                        );
                         //sf::RenderWindow window(sf::VideoMode(1800, 1000), "SFML works!");
                         //window.setFramerateLimit(200);
 
@@ -454,18 +459,49 @@ int main()
 
 
                         //}
+if (l == -1)
+{
+    p = level1(backg,
+        c_prize1,
+        c_prize2,
+        A,
+        fire_sprite,
+        stonetex,
+        stonerevtex,
+        stone2tex,
+        stone2revtex,
+        stone3tex,
+        stone3revtex,
+        watertex,
+        bordertex,
+        borderhoritex,
+        opendoortex,
+        opendoorrevtex,
+        doortex,
+        doorrevtex,
+        chesttex,
+        openchesttex,
+        torchtex,
+        fireanime,
+        heroTexture,
+        dragonTexture,
+        firetexture,
+        spelltexture,
+        fireballTexture,
+        SkeletonTexture);
+                        }
 
 
 
                     }
 
-                    if (x == 1||y==1)
+                    if (x == 1 || y == 1)
                     {
-                        int p = 0;
+                         p = 0;
                         menu.close();
-                        l = level(backmenu,mainmenu);
+                        l = level(backmenu, mainmenu);
                         if (l == 0) {
-                            p=level1(backg,
+                            p = level1(backg,
                                 c_prize1,
                                 c_prize2,
                                 A,
@@ -492,17 +528,79 @@ int main()
                                 firetexture,
                                 spelltexture,
                                 fireballTexture,
-                                SkeletonTexture
+                                SkeletonTexture);
 
 
 
-                            );
+
+
+                                if (p == -1)
+                                {
+                                    p = level1(backg,
+                                        c_prize1,
+                                        c_prize2,
+                                        A,
+                                        fire_sprite,
+                                        stonetex,
+                                        stonerevtex,
+                                        stone2tex,
+                                        stone2revtex,
+                                        stone3tex,
+                                        stone3revtex,
+                                        watertex,
+                                        bordertex,
+                                        borderhoritex,
+                                        opendoortex,
+                                        opendoorrevtex,
+                                        doortex,
+                                        doorrevtex,
+                                        chesttex,
+                                        openchesttex,
+                                        torchtex,
+                                        fireanime,
+                                        heroTexture,
+                                        dragonTexture,
+                                        firetexture,
+                                        spelltexture,
+                                        fireballTexture,
+                                        SkeletonTexture);
+                                }
+                                cout << p;
+
+                              //  RenderWindow gameover(VideoMode(width, height), "Credits");
+
+
+
+                                //while (gameover.isOpen())
+                                //{
+                                //    Event creditevent;
+                                //    while (gameover.pollEvent(creditevent))
+                                //    {
+                                //        if (creditevent.type == Event::Closed)
+                                //            gameover.close();
+
+                                //    }
+
+                                //    gameover.clear();
+
+
+                                //    gameover.draw(crespr);
+                                //    for (int i = 0;i < 4;i++)
+                                //    {
+                                //        credit.draw(txt[i]);
+                                //    }
+                                //    credit.display();
+
+
+                                //}
+
+                            
                         }
-                        if (l == 1)
+                        if (l == 1||p==1)
                         {
-                            p=level2(back2g,
+                            p = level2(back2g,
                                 c_prize1,
-                                
+
                                 A,
                                 fire_sprite,
                                 stonetex,
@@ -520,7 +618,7 @@ int main()
                                 doorrevtex,
                                 chesttex,
                                 openchesttex,
-                                torchtex,
+                                torch2tex,
                                 fireanime,
                                 heroTexture,
                                 dragonTexture,
@@ -534,7 +632,7 @@ int main()
                             );
 
                         }
-                        if (l == 2)
+                        if (l == 2||p==2)
                         {
                             p = level3(back3g,
                                 c_prize1,
@@ -568,34 +666,44 @@ int main()
 
 
                         }
-                      /*  if (l == 3)
-                        {
-                            p = level4(backg
-                                , stonetex
-                                , stonerevtex, stone2tex
-                                , stone2revtex
-                                , stone3tex
-                                , stone3revtex
-                                , watertex
-                                , bordertex
-                                , borderhoritex
-                                , opendoortex
-                                , opendoorrevtex
-                                , doortex
-                                , doorrevtex
-                                , chesttex
-                                , openchesttex
-                                , torchtex, fireanime
-                                , cointex);
+                          if (l == 3||p==3)
+                          {
+                              p = level4(back4g,
+                                  c_prize1,
+                                  A,
+                                  fire_sprite,
+                                  stonetex,
+                                  stonerevtex,
+                                  stone2tex,
+                                  stone2revtex,
+                                  stone3tex,
+                                  stone3revtex,
+                                  watertex,
+                                  bordertex,
+                                  borderhoritex,
+                                  opendoortex,
+                                  opendoorrevtex,
+                                  doortex,
+                                  doorrevtex,
+                                  chesttex,
+                                  openchesttex,
+                                  torch4tex,
+                                  fireanime,
+                                  heroTexture,
+                                  dragonTexture,
+                                  firetexture,
+                                  spelltexture,
+                                  fireballTexture,
+                                  SkeletonTexture);
 
 
 
-                        }*/
+                          }
 
 
                     }
 
-                    if (x == 2||y==2)
+                    if (x == 2 || y == 2)
                     {
                         RenderWindow credit(VideoMode(width, height), "Credits");
                         txt[0].setFont(fnt);
@@ -655,7 +763,7 @@ int main()
                         }
                     }
 
-                    if (x == 3||y==3)
+                    if (x == 3 || y == 3)
                     {
                         menu.clear();
                         menu.close();
@@ -683,8 +791,8 @@ int main()
 
 
 
-    
-    
+
+
 
 
     //while (window.isOpen())

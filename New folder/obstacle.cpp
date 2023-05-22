@@ -21,8 +21,8 @@ void Set_obstacle::set_water(RenderWindow& window, vector<Sprite>& S_WATER, Text
 	S_WATER[0].setColor(Color(255, 255, 255, 58));
 	S_WATER[1].setColor(Color(255, 255, 255, 58));
 
-	window.draw(S_WATER[0]);
-	window.draw(S_WATER[1]);
+		window.draw(S_WATER[0]);
+		window.draw(S_WATER[1]);
 
 
 
@@ -35,7 +35,7 @@ void Set_obstacle::set_borber(RenderWindow& window, vector<Sprite>& S_BORDER, Te
 		S_BORDER[i].setTexture(bordertex);
 	}
 
-	S_BORDER[0].setPosition(20, 0);
+	S_BORDER[0].setPosition(20,0);
 	S_BORDER[1].setPosition(20, 980);
 
 
@@ -61,13 +61,13 @@ void Set_obstacle::set_borderhori(RenderWindow& window, vector<Sprite>& S_BORDER
 	}
 }
 
-void Set_obstacle::set_door(RenderWindow& window, vector<Sprite>& S_DOOR, Texture& doortex, Texture& doorrevtex)
+void Set_obstacle::set_door(RenderWindow& window, vector<Sprite>& S_DOOR, Texture& doortex,Texture& doorrevtex, Texture& opendoorrevtex)
 {
 
 	for (int i = 0;i < 10;i++) {
 	}
-	S_DOOR[0].setTexture(doortex);
-	S_DOOR[1].setTexture(doorrevtex);
+		S_DOOR[0].setTexture(doortex);
+		S_DOOR[1].setTexture(doorrevtex);
 
 	S_DOOR[1].setPosition(100, 0);
 	S_DOOR[0].setPosition(1600, 890);
@@ -89,7 +89,7 @@ void Set_obstacle::set_chest(RenderWindow& window, vector<Sprite>& S_CHEST, Text
 	S_CHEST[1].setPosition(1255, 270);
 
 
-	for (int i = 0;i < 2;i++) {
+	for (int i = 0;i <2 ;i++) {
 		window.draw(S_CHEST[i]);
 	}
 }
@@ -112,7 +112,8 @@ void Set_obstacle::set_openchest(RenderWindow& window, vector<Sprite>& S_OPENCHE
 
 
 
-void Set_obstacle::set_stone(RenderWindow& window, vector<Sprite>& S_STONE, Texture& stonetex, Texture& stonerevtex) {
+void Set_obstacle::set_stone(RenderWindow& window, vector<Sprite>& S_STONE, Texture& stonetex,Texture& stonerevtex) {
+
 
 	for (int i = 0; i < 25; i++) {
 		S_STONE[i].setTexture(stonetex);
@@ -146,7 +147,7 @@ void Set_obstacle::set_stone(RenderWindow& window, vector<Sprite>& S_STONE, Text
 	for (int i = 0;i < 1;i++) {
 		window.draw(S_STONE[i]);
 	}
-
+	
 	for (int i = 25;i < 31;i++) {
 		window.draw(S_STONE[i]);
 	}

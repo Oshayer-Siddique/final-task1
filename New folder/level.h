@@ -1,14 +1,5 @@
 #pragma once
-#include<iostream>
-#include<vector>
-#include<ctime>
-#include<string>
-#include<sstream>
-#include<SFML/Graphics.hpp>
-#include<SFML/System.hpp>
-#include<SFML/Window.hpp>
-#include<SFML/Audio.hpp>
-using namespace sf;
+#include "map.h"
 #include "mainmenu.h"
 int level(Sprite& backmenu, MainMenu mainmenu)
 {
@@ -33,8 +24,8 @@ int level(Sprite& backmenu, MainMenu mainmenu)
 			if (levelevent.type == Event::Closed)
 				levels.close();
 
-			if (levelevent.type == Event::KeyReleased || Mouse::isButtonPressed(Mouse::Left)
-				)
+			if (levelevent.type == Event::KeyReleased|| Mouse::isButtonPressed(Mouse::Left)
+		)
 			{
 
 				if (levelevent.key.code == Keyboard::Up)
@@ -78,56 +69,56 @@ int level(Sprite& backmenu, MainMenu mainmenu)
 					return x;
 				}
 			}
-			if (menu1.contains(mousePos))
-			{
-				LevelMenu.mainMenu[4].setFillColor(Color::Color(178, 34, 34));
-				if (Mouse::isButtonPressed(Mouse::Left))
+			
+				if (menu1.contains(mousePos))
 				{
-					return 0;
+					LevelMenu.mainMenu[4].setFillColor(Color::Color(178, 34, 34));
+					if (Mouse::isButtonPressed(Mouse::Left))
+					{
+						return 0;
+					}
 				}
-			}
-			else
-			{
-				LevelMenu.mainMenu[4].setFillColor(Color::Color(255, 222, 173));
-			}
-			if (menu2.contains(mousePos))
-			{
-
-				LevelMenu.mainMenu[5].setFillColor(Color::Color(178, 34, 34));
-				if (Mouse::isButtonPressed(Mouse::Left))
+				else
 				{
-					return 1;
+					LevelMenu.mainMenu[4].setFillColor(Color::Color(255, 222, 173));
 				}
+				if (menu2.contains(mousePos))
+				{
 
-			}
-			else
-			{
-				LevelMenu.mainMenu[5].setFillColor(Color::Color(255, 222, 173));
-			}
-			if (menu3.contains(mousePos))
-			{
-				LevelMenu.mainMenu[6].setFillColor(Color::Color(178, 34, 34));
-				if (Mouse::isButtonPressed(Mouse::Left))
-					return 2;
+					LevelMenu.mainMenu[5].setFillColor(Color::Color(178, 34, 34));
+					if (Mouse::isButtonPressed(Mouse::Left))
+					{
+						return 1;
+					}
 
-			}
-			else
-			{
-				LevelMenu.mainMenu[6].setFillColor(Color::Color(255, 222, 173));
-			}
-			if (menu4.contains(mousePos))
-			{
-				LevelMenu.mainMenu[7].setFillColor(Color::Color(178, 34, 34));
-				if (Mouse::isButtonPressed(Mouse::Left))
-					return 3;
+				}
+				else
+				{
+					LevelMenu.mainMenu[5].setFillColor(Color::Color(255, 222, 173));
+				}
+				if (menu3.contains(mousePos))
+				{
+					LevelMenu.mainMenu[6].setFillColor(Color::Color(178, 34, 34));
+					if (Mouse::isButtonPressed(Mouse::Left))
+						return 2;
 
+				}
+				else
+				{
+					LevelMenu.mainMenu[6].setFillColor(Color::Color(255, 222, 173));
+				}
+				if (menu4.contains(mousePos))
+				{
+					LevelMenu.mainMenu[7].setFillColor(Color::Color(178, 34, 34));
+					if (Mouse::isButtonPressed(Mouse::Left))
+						return 3;
 
-			}
-			else
-			{
-				LevelMenu.mainMenu[7].setFillColor(Color::Color(255, 222, 173));
-			}
-
+					
+				}
+				else
+				{
+					LevelMenu.mainMenu[7].setFillColor(Color::Color(255, 222, 173));
+				}
 			
 		}
 
@@ -140,4 +131,4 @@ int level(Sprite& backmenu, MainMenu mainmenu)
 
 	}
 }
-
+	

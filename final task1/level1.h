@@ -338,7 +338,7 @@
         if (w <= 0) {
             w = 0;
             Oshayer.Update_death(heroTexture, deltaTime, 100);
-            break;
+            return -1;
         }
 
 
@@ -424,6 +424,7 @@
 
     if (c_prize1.getPosition().x >= 1600 and c_prize1.getPosition().x<=  1700 and c_prize1.getPosition().y >= 890 and c_prize2.getPosition().x >= 1600) {
         cout << "MISSION SUCCESS" << endl;
+        return 1;
     }
 
 
@@ -467,5 +468,5 @@
 
 		    window.display();
 	    }
-        return 0;
+        return 1;
     }

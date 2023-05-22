@@ -150,6 +150,7 @@
     <ClCompile Include="obstacle.cpp" />
     <ClCompile Include="obstacle2.cpp" />
     <ClCompile Include="obstacle3.cpp" />
+    <ClCompile Include="obstacle4.cpp" />
     <ClCompile Include="prize.cpp" />
     <ClCompile Include="mainmenu.cpp" />
     <ClCompile Include="SpellCast.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="level1.h" />
     <ClInclude Include="level2.h" />
     <ClInclude Include="level3.h" />
+    <ClInclude Include="level4.h" />
     <ClInclude Include="mainmenu.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="material.h" />

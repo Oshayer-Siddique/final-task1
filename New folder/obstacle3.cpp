@@ -57,7 +57,7 @@ void Set_obstacle::set_borderhori3(RenderWindow& window, vector<Sprite>& S_BORDE
 	}
 }
 
-void Set_obstacle::set_door3(RenderWindow& window, vector<Sprite>& S_DOOR, Texture& doortex, Texture& doorrevtex)
+void Set_obstacle::set_door3(RenderWindow& window, vector<Sprite>& S_DOOR, Texture& doortex, Texture& doorrevtex,Texture& opendoorrevtex)
 {
 
 	for (int i = 0;i < 10;i++) {
@@ -68,7 +68,7 @@ void Set_obstacle::set_door3(RenderWindow& window, vector<Sprite>& S_DOOR, Textu
 
 
 	S_DOOR[2].setPosition(900, 10);
-	S_DOOR[0].setPosition(900, 890);
+	S_DOOR[0].setPosition(900,890);
 	S_DOOR[1].setPosition(900, 10);
 
 
@@ -155,9 +155,9 @@ void Set_obstacle::set_stonetwo3(RenderWindow& window, vector<Sprite>& S_STONE2,
 	S_STONE2[1].setPosition(150, 750);
 	/*S_STONE2[2].setPosition(900, 270);
 	S_STONE2[3].setPosition(900, 320);
-
-
-
+	
+	
+	
 S_STONE[22].setColor(sf::Color(255, 255, 255, 128));
 */
 	S_STONE2[25].setPosition(1000, 20);
@@ -228,3 +228,5 @@ void Set_obstacle::set_stonethree3(RenderWindow& window, vector<Sprite>& S_STONE
 	//}
 
 }
+	
+

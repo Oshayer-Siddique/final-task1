@@ -14,9 +14,6 @@
 #include "mainmenu.h"
 #include "SpellCast.h"
 #include"obstacle.h"
-
-
-#include"obstacle.h"
 int level3(Sprite& backg,
 	Sprite& c_prize,
 	Sprite& A,

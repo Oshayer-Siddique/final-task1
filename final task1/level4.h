@@ -15,8 +15,7 @@
 #include "SpellCast.h"
 #include"obstacle.h"
 
-#include"obstacle.h"
-int level2(Sprite& backg,
+int level4(Sprite& back4g,
 	Sprite& c_prize,
 	Sprite& A,
 	Sprite& fire_sprite,
@@ -75,32 +74,36 @@ int level2(Sprite& backg,
 	vector<Sprite>S_OPENCHEST(50);
 
 
-	Hazard lightlamp(&torchtex, Vector2u(3, 2), 0.3f, 100, 1750, 920);
-	Hazard lightlamp5(&torchtex, Vector2u(3, 2), 0.3f, 100, 13, 35);
-	Hazard lightlamp6(&torchtex, Vector2u(3, 2), 0.3f, 100, 13, 920);
-	Hazard lightlamp7(&torchtex, Vector2u(3, 2), 0.3f, 100, 1750, 35);
-	Hazard lightlamp1(&torchtex, Vector2u(3, 2), 0.3f, 100, 270, 250);
-	Hazard lightlamp2(&torchtex, Vector2u(3, 2), 0.3f, 100, 1560, 650);
-	Hazard lightlamp3(&torchtex, Vector2u(3, 2), 0.3f, 100, 1300, 650);
-	Hazard lightlamp4(&torchtex, Vector2u(3, 2), 0.3f, 100, 490, 250);
-	Hazard lightlamp8(&torchtex, Vector2u(3, 2), 0.3f, 100, 880, 355);
-	Hazard lightlamp9(&torchtex, Vector2u(3, 2), 0.3f, 100, 480, 530);
-	Hazard lightlamp10(&torchtex, Vector2u(3, 2), 0.3f, 100, 1330, 430);
-	Hazard lightlamp11(&torchtex, Vector2u(3, 2), 0.3f, 100, 880, 765);
+	Hazard lightlamp(&torchtex, Vector2u(14, 1), 0.1f, 100, 1750, 910);
+	Hazard lightlamp5(&torchtex, Vector2u(14, 1), 0.1f, 100, 13, 35);
+	Hazard lightlamp6(&torchtex, Vector2u(14, 1), 0.1f, 100, 13, 920);
+	Hazard lightlamp7(&torchtex, Vector2u(14, 1), 0.1f, 100, 1750, 25);
 
-	Hazard FireAnime(&fireanime, Vector2u(8, 1), 0.1f, 100, 550, 530);
-	Hazard FireAnime1(&fireanime, Vector2u(8, 1), 0.1f, 100, 550, 630);
-	Hazard FireAnime2(&fireanime, Vector2u(8, 1), 0.1f, 100, 550, 730);
-	Hazard FireAnime3(&fireanime, Vector2u(8, 1), 0.1f, 100, 550, 830);
-	Hazard FireAnime4(&fireanime, Vector2u(8, 1), 0.1f, 100, 625, 530);
-	Hazard FireAnime5(&fireanime, Vector2u(8, 1), 0.1f, 100, 625, 630);
-	Hazard FireAnime6(&fireanime, Vector2u(8, 1), 0.1f, 100, 625, 730);
-	Hazard FireAnime7(&fireanime, Vector2u(8, 1), 0.1f, 100, 625, 830);
-	Hazard FireAnime8(&fireanime, Vector2u(8, 1), 0.1f, 100, 700, 530);
-	Hazard FireAnime9(&fireanime, Vector2u(8, 1), 0.1f, 100, 700, 630);
-	Hazard FireAnime10(&fireanime, Vector2u(8, 1), 0.1f, 100, 700, 730);
-	Hazard FireAnime11(&fireanime, Vector2u(8, 1), 0.1f, 100, 700, 830);
-	
+	Hazard lightlamp1(&torchtex, Vector2u(14, 1), 0.1f, 100, 420, 240);
+	Hazard lightlamp2(&torchtex, Vector2u(14, 1), 0.1f, 100, 45, 530);
+	Hazard lightlamp3(&torchtex, Vector2u(14, 1), 0.1f, 100, 270, 530);
+	Hazard lightlamp4(&torchtex, Vector2u(14, 1), 0.1f, 100, 720, 530);
+	Hazard lightlamp8(&torchtex, Vector2u(14, 1), 0.1f, 100, 720, 780);
+	Hazard lightlamp9(&torchtex, Vector2u(14, 1), 0.1f, 100, 800, 270);
+	Hazard lightlamp10(&torchtex, Vector2u(14, 1), 0.1f, 100, 1230, 20);
+	Hazard lightlamp11(&torchtex, Vector2u(14, 1), 0.1f, 100, 1150, 750);
+	Hazard lightlamp12(&torchtex, Vector2u(14, 1), 0.1f, 100, 1705, 420);
+	Hazard lightlamp13(&torchtex, Vector2u(14, 1), 0.1f, 100, 1550, 750);
+	Hazard lightlamp14(&torchtex, Vector2u(14, 1), 0.1f, 100, 1180, 220);
+	Hazard lightlamp15(&torchtex, Vector2u(14, 1), 0.1f, 100, 1480, 470);
+	Hazard lightlamp16(&torchtex, Vector2u(14, 1), 0.1f, 100, 1180, 470);
+	Hazard lightlamp17(&torchtex, Vector2u(14, 1), 0.1f, 100, 520, 930);
+
+
+
+	Hazard FireAnime(&fireanime, Vector2u(8, 1), 0.1f, 100, 1160, 850);
+	Hazard FireAnime1(&fireanime, Vector2u(8, 1), 0.1f, 100, 1110, 850);
+	Hazard FireAnime2(&fireanime, Vector2u(8, 1), 0.1f, 100, 1210, 850);
+	Hazard FireAnime3(&fireanime, Vector2u(8, 1), 0.1f, 100, 1260, 850);
+	Hazard FireAnime4(&fireanime, Vector2u(8, 1), 0.1f, 100, 1310, 850);
+	Hazard FireAnime5(&fireanime, Vector2u(8, 1), 0.1f, 100, 1360, 850);
+	Hazard FireAnime6(&fireanime, Vector2u(8, 1), 0.1f, 100, 1410, 850);
+	Hazard FireAnime7(&fireanime, Vector2u(8, 1), 0.1f, 100, 1460, 850);
 
 
 	Collision player_obstacle;
@@ -122,15 +125,9 @@ int level2(Sprite& backg,
 	Animation animation(&heroTexture, Vector2u(4, 4), 0.1f);
 
 
-
-	//Material G_SWORD(T);
-
-
-
-
-	Hero Oshayer(&heroTexture, Vector2u(7, 13), 0.1f, 1600, 50);
-	Enemy Drago(&dragonTexture, Vector2u(3, 4), 0.1f, 100, 50, 00);
-	Enemy SKELETON(&SkeletonTexture, Vector2u(9, 4), 0.1f, 70, 1200, 500);
+	Hero Oshayer(&heroTexture, Vector2u(7, 13), 0.1f, 50, 0);
+	Enemy Drago(&dragonTexture, Vector2u(3, 4), 0.1f, 100, 1500, 0);
+	Enemy SKELETON(&SkeletonTexture, Vector2u(9, 4), 0.1f, 70, 70, 900);
 	//Hazard dangerfire(&firetexture, Vector2u(9, 1), 0.1f, 100, 1000, 500);
 	//Hazard G_greenfire(&greenfire, Vector2u(8, 1), 0.1f, 100, 800, 500);
 
@@ -141,18 +138,7 @@ int level2(Sprite& backg,
 
 
 
-
-
-
-
-
-
-
-
-
-
-	RenderWindow window(VideoMode(1800, 1000), "Level2");
-
+	RenderWindow window(VideoMode(1800, 1000), "Level3");
 
 
 	while (window.isOpen())
@@ -166,7 +152,7 @@ int level2(Sprite& backg,
 		}
 
 		window.clear();
-		window.draw(backg);
+		window.draw(back4g);
 
 
 
@@ -175,12 +161,12 @@ int level2(Sprite& backg,
 		//G_LEVEL1.set_stone(window,S_STONE,stonetex);
 		G_LEVEL1.set_borber(window, S_BORDER, bordertex);
 		G_LEVEL1.set_borderhori(window, S_BORDERHORI, borderhoritex);
-		G_LEVEL1.set_door2(window, S_DOOR, doortex, doorrevtex);
+		G_LEVEL1.set_door4(window, S_DOOR, doortex, doorrevtex);
 
-		G_LEVEL1.set_chest2(window, S_CHEST, chesttex);
-		G_LEVEL1.set_openchest2(window, S_OPENCHEST, openchesttex);
-		G_LEVEL1.set_stonethree2(window, S_STONE3, stone3tex, stone3revtex);
-		G_LEVEL1.set_stonetwo2(window, S_STONE2, stone2tex, stone2revtex);
+		G_LEVEL1.set_chest4(window, S_CHEST, chesttex);
+		G_LEVEL1.set_openchest4(window, S_OPENCHEST, openchesttex);
+		G_LEVEL1.set_stonethree4(window, S_STONE3, stone3tex, stone3revtex);
+		G_LEVEL1.set_stonetwo4(window, S_STONE2, stone2tex, stone2revtex);
 
 
 
@@ -208,6 +194,18 @@ int level2(Sprite& backg,
 		lightlamp10.Draw(window);
 		lightlamp11.Update_hazard(torchtex, deltaTime);
 		lightlamp11.Draw(window);
+		lightlamp12.Update_hazard(torchtex, deltaTime);
+		lightlamp12.Draw(window);
+		lightlamp13.Update_hazard(torchtex, deltaTime);
+		lightlamp13.Draw(window);
+		lightlamp14.Update_hazard(torchtex, deltaTime);
+		lightlamp14.Draw(window);
+		lightlamp15.Update_hazard(torchtex, deltaTime);
+		lightlamp15.Draw(window);
+		lightlamp16.Update_hazard(torchtex, deltaTime);
+		lightlamp16.Draw(window);
+		lightlamp17.Update_hazard(torchtex, deltaTime);
+		lightlamp17.Draw(window);
 
 		FireAnime.Update_hazard(fireanime, deltaTime);
 		FireAnime.Draw(window);
@@ -225,25 +223,6 @@ int level2(Sprite& backg,
 		FireAnime6.Draw(window);
 		FireAnime7.Update_hazard(fireanime, deltaTime);
 		FireAnime7.Draw(window);
-		FireAnime8.Update_hazard(fireanime, deltaTime);
-		FireAnime8.Draw(window);
-		FireAnime9.Update_hazard(fireanime, deltaTime);
-		FireAnime9.Draw(window);
-		FireAnime10.Update_hazard(fireanime, deltaTime);
-		FireAnime10.Draw(window);
-		FireAnime11.Update_hazard(fireanime, deltaTime);
-		FireAnime11.Draw(window);
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -346,7 +325,7 @@ int level2(Sprite& backg,
 			w -= 0.03;
 			if (w <= 0) {
 				w = 0;
-				
+
 			}
 
 		}
@@ -391,7 +370,7 @@ int level2(Sprite& backg,
 		player_obstacle.collision_chk(Drago.enemyBody, S_STONE);
 		player_obstacle.collision_chk(Drago.enemyBody, S_STONE2);
 		player_obstacle.collision_chk(Drago.enemyBody, S_STONE3);
-		
+
 		player_obstacle.collision_chk(Drago.enemyBody, S_BORDER);
 		player_obstacle.collision_chk(Drago.enemyBody, S_BORDERHORI);
 		player_obstacle.collision_chk(SKELETON.enemyBody, S_STONE);
@@ -400,9 +379,8 @@ int level2(Sprite& backg,
 
 
 
-
-
 		window.display();
 	}
 	return 1;
 }
+
