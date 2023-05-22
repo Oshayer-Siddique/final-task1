@@ -20,6 +20,7 @@ Enemy::Enemy(Texture* texture, Vector2u imageCount, float switchTime, float spee
 
 void Enemy::Update_enemy_movement(Texture& texture, float deltaTime, Sprite& Target) {
 
+
 	border.setSize(Vector2f(enemyBody.getGlobalBounds().width,enemyBody.getGlobalBounds().height));
 	border.setPosition(enemyBody.getPosition().x, enemyBody.getPosition().y);
 

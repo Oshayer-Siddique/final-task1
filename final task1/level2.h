@@ -124,9 +124,9 @@ int level2(Sprite& backg,
 
 
 
-	Hero Oshayer(&heroTexture, Vector2u(7, 13), 0.1f, 30, 0);
-	Enemy Drago(&dragonTexture, Vector2u(3, 4), 0.1f, 100, 1500, 0);
-	Enemy SKELETON(&SkeletonTexture, Vector2u(9, 4), 0.1f, 70, 70, 900);
+	Hero Oshayer(&heroTexture, Vector2u(7, 13), 0.1f, 1600, 50);
+	Enemy Drago(&dragonTexture, Vector2u(3, 4), 0.1f, 100, 50, 00);
+	Enemy SKELETON(&SkeletonTexture, Vector2u(9, 4), 0.1f, 70, 1200, 500);
 	//Hazard dangerfire(&firetexture, Vector2u(9, 1), 0.1f, 100, 1000, 500);
 	//Hazard G_greenfire(&greenfire, Vector2u(8, 1), 0.1f, 100, 800, 500);
 

@@ -229,7 +229,7 @@ int main()
     /*                                DECLEARING MATERIAL                         */
     /* -------------------------------------------------------------------------- */
     Sprite A;
-    Sprite c_prize;
+    Sprite c_prize1,c_prize2;
 
     /* -------------------------------------------------------------------------- */
     /*                                MATERIAL OBJECTS                            */
@@ -265,7 +265,7 @@ int main()
     Collision player_obstacle;
 
 
-    prize crown(700, 700, c_prize);
+    //prize crown(700, 700, c_prize);
 
 
 
@@ -311,7 +311,8 @@ int main()
                     if (x == 0|| y==0)
                     {
                         l = level1(backg,
-                            c_prize,
+                            c_prize1,
+                            c_prize2,
                             A,
                             fire_sprite,
                             stonetex,
@@ -465,7 +466,8 @@ int main()
                         l = level(backmenu,mainmenu);
                         if (l == 0) {
                             p=level1(backg,
-                                c_prize,
+                                c_prize1,
+                                c_prize2,
                                 A,
                                 fire_sprite,
                                 stonetex,
@@ -499,7 +501,8 @@ int main()
                         if (l == 1)
                         {
                             p=level2(back2g,
-                                c_prize,
+                                c_prize1,
+                                
                                 A,
                                 fire_sprite,
                                 stonetex,
@@ -534,7 +537,7 @@ int main()
                         if (l == 2)
                         {
                             p = level3(back3g,
-                                c_prize,
+                                c_prize1,
                                 A,
                                 fire_sprite,
                                 stonetex,

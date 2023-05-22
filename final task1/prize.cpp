@@ -6,7 +6,7 @@ prize::prize(float x, float y,Sprite& c_prize) {
 
 void prize::set_prize(RenderWindow& window,Sprite& c_prize) {
 	Texture prizes;
-	prizes.loadFromFile("crown.png");
+	prizes.loadFromFile("ruby.png");
 	c_prize.setTexture(prizes);
 	window.draw(c_prize);
 
