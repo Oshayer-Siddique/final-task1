@@ -30,6 +30,8 @@ using namespace std;
 int main()
 {
 
+    
+
     float width = 1800;
     float height = 1000;
     int l,p;
@@ -67,9 +69,16 @@ int main()
         torch4tex,
         fireanime,
         fire2anime,
-        cointex;
+        cointex,
+        dragonTexture2,
+        Wolftexture,
+        dragontexture3,
+        dragontexture4,
+        monsterTexture,
+        minioter;
+        
 
-    Sprite backg, back2g, back3g, back4g, backmenu, crespr;
+    Sprite backg, back2g, back3g, back4g, backmenu, crespr,c_prize3,c_prize4;
 
     if (!stonetex.loadFromFile("F:/SFML Projects/final task1/New folder/block.png")) {}
     if (!stonerevtex.loadFromFile("F:/SFML Projects/final task1/New folder/blockrev.png")) {}
@@ -183,31 +192,20 @@ int main()
     Texture SkeletonTexture;
     SkeletonTexture.loadFromFile("Skeleton Movement.png");
 
-
-
-
-
-
-
+    dragonTexture2.loadFromFile("DragonYellow.png");
+    Wolftexture.loadFromFile("Wolf_Movement.png");
+    dragontexture3.loadFromFile("DragonGreen.png");
+    monsterTexture.loadFromFile("Monster_movement.png");
+    dragontexture4.loadFromFile("DragonFINAL.png");
+    minioter.loadFromFile("Minotour Movement.png");
+    
 
     /* Texture hero_fightTexture;
      hero_fightTexture.loadFromFile("hero_fight.png");*/
 
 
-
-
-
-
-
-
-
-
-
      //Clock clock;
      //float deltaTime;
-
-
-
 
      /* -------------------------------------------------------------------------- */
      /*                                DECLEARING OBSTACLE                         */
@@ -600,7 +598,7 @@ if (l == -1)
                         {
                             p = level2(back2g,
                                 c_prize1,
-
+                                c_prize2,
                                 A,
                                 fire_sprite,
                                 stonetex,
@@ -625,7 +623,10 @@ if (l == -1)
                                 firetexture,
                                 spelltexture,
                                 fireballTexture,
-                                SkeletonTexture
+                                SkeletonTexture, 
+                                dragonTexture2,
+                                Wolftexture
+                              
 
 
 
@@ -636,6 +637,7 @@ if (l == -1)
                         {
                             p = level3(back3g,
                                 c_prize1,
+                                c_prize2,
                                 A,
                                 fire_sprite,
                                 stonetex,
@@ -660,7 +662,9 @@ if (l == -1)
                                 firetexture,
                                 spelltexture,
                                 fireballTexture,
-                                SkeletonTexture);
+                                SkeletonTexture,
+                                dragontexture3,
+                                monsterTexture);
 
 
 
@@ -670,6 +674,7 @@ if (l == -1)
                           {
                               p = level4(back4g,
                                   c_prize1,
+                                  c_prize2,
                                   A,
                                   fire_sprite,
                                   stonetex,
@@ -694,7 +699,10 @@ if (l == -1)
                                   firetexture,
                                   spelltexture,
                                   fireballTexture,
-                                  SkeletonTexture);
+                                  SkeletonTexture,
+                                  dragontexture4,
+                                  minioter
+                              );
 
 
 

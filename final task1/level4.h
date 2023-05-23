@@ -16,7 +16,8 @@
 #include"obstacle.h"
 
 int level4(Sprite& back4g,
-	Sprite& c_prize,
+	Sprite& c_prize1,
+	Sprite& c_prize2,
 	Sprite& A,
 	Sprite& fire_sprite,
 	Texture& stonetex,
@@ -41,7 +42,9 @@ int level4(Sprite& back4g,
 	Texture& firetexture,
 	Texture& spelltexture,
 	Texture& fireballTexture,
-	Texture& SkeletonTexture
+	Texture& SkeletonTexture,
+	Texture& dragonTexture4,
+	Texture& minioter
 )
 {
 
@@ -109,14 +112,16 @@ int level4(Sprite& back4g,
 	Collision player_obstacle;
 
 
-	prize crown(700, 700, c_prize);
+	prize ruby1(630, 580, c_prize1);
+
+	prize ruby2(1570, 70, c_prize2);
 
 
 	float w;
 	w = 100;
 
 	float dh;
-	dh = 90;
+	dh = 110;
 
 
 
@@ -125,9 +130,9 @@ int level4(Sprite& back4g,
 	Animation animation(&heroTexture, Vector2u(4, 4), 0.1f);
 
 
-	Hero Oshayer(&heroTexture, Vector2u(7, 13), 0.1f, 50, 0);
-	Enemy Drago(&dragonTexture, Vector2u(3, 4), 0.1f, 100, 1500, 0);
-	Enemy SKELETON(&SkeletonTexture, Vector2u(9, 4), 0.1f, 70, 70, 900);
+	Hero Oshayer(&heroTexture, Vector2u(7, 13), 0.1f, 700, 10);
+	Enemy Drago(&dragonTexture4, Vector2u(3, 4), 0.1f, 100, 200, 100);
+	Enemy SKELETON(&minioter, Vector2u(9, 4), 0.1f, 70, 1200, 700);
 	//Hazard dangerfire(&firetexture, Vector2u(9, 1), 0.1f, 100, 1000, 500);
 	//Hazard G_greenfire(&greenfire, Vector2u(8, 1), 0.1f, 100, 800, 500);
 
@@ -138,7 +143,7 @@ int level4(Sprite& back4g,
 
 
 
-	RenderWindow window(VideoMode(1800, 1000), "Level3");
+	RenderWindow window(VideoMode(1800, 1000), "Level4");
 
 
 	while (window.isOpen())
@@ -230,7 +235,11 @@ int level4(Sprite& back4g,
 
 
 
-		crown.set_prize(window, c_prize);
+		ruby1.set_prize(window, c_prize1);
+		ruby2.set_prize(window, c_prize2);
+
+		Oshayer.prize_hijack(window, c_prize1);
+
 		//   G_SWORD.set_material(window, A, T);
 
 
@@ -240,16 +249,25 @@ int level4(Sprite& back4g,
 		   //G_DRAGON.enemy_animation(window, dragon_sprite, dragon_frames);
 		   //G_FIRE.hazard_animation(window,fire_sprite,fire_frames);
 
-		int x = crown.get_prize_position(c_prize);
+		int x = ruby1.get_prize_position(c_prize1);
+
+		int x1 = c_prize2.getPosition().x;
+
+
 
 		//cout << x << endl;
 
 		if (x == -1500) {
-			Oshayer.Update_movement(heroTexture, deltaTime, 70);
+			Oshayer.Update_movement(heroTexture, deltaTime, 100);
 
 		}
-		else {
+		else if (x1 == -1800) {
 			Oshayer.Update_movement(heroTexture, deltaTime, 100);
+
+		}
+
+		else {
+			Oshayer.Update_movement(heroTexture, deltaTime, 125);
 
 		}
 
@@ -275,7 +293,7 @@ int level4(Sprite& back4g,
 
 
 		Oshayer.Draw(window);
-		Oshayer.prize_hijack(window, c_prize);
+		
 
 		Drago.Update_enemy_movement(dragonTexture, deltaTime, Oshayer.body);
 		Drago.Draw(window);
@@ -313,7 +331,7 @@ int level4(Sprite& back4g,
 			if (w <= 0) {
 				w = 0;
 				Oshayer.Update_death(heroTexture, deltaTime, 100);
-				//break;
+				break;
 			}
 
 
@@ -328,6 +346,20 @@ int level4(Sprite& back4g,
 
 			}
 
+		}
+		else if ((player_obstacle.collision_chk_S(Oshayer.body, FireAnime.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime1.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime2.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime3.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime4.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime5.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime6.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime7.hazardBody))) {
+			w -= 0.02;
+			if (w <= 0) {
+				w = 0;
+				break;
+			}
 		}
 
 		window.draw(healthbar_player);
@@ -348,6 +380,28 @@ int level4(Sprite& back4g,
 
 		window.draw(healthbar_dragon);
 
+
+		FloatRect a = Oshayer.body.getGlobalBounds();
+		FloatRect b = Drago.enemyBody.getGlobalBounds();
+
+
+		if (a.intersects(c_prize2.getGlobalBounds())) {
+			if (Keyboard::isKeyPressed(Keyboard::H)) {
+				c_prize2.setPosition(1800, -1800);
+			}
+			else if (Keyboard::isKeyPressed(Keyboard::R)) {
+				c_prize2.setPosition(Oshayer.body.getPosition());
+			}
+
+		}
+
+		cout << c_prize1.getPosition().x << " " << c_prize2.getPosition().x << endl;
+
+
+		if (c_prize1.getPosition().x >= 1600 and c_prize1.getPosition().x <= 1700 and c_prize1.getPosition().y >= 890 and c_prize2.getPosition().x == 1800) {
+			cout << "MISSION SUCCESS" << endl;
+			return 1;
+		}
 
 
 

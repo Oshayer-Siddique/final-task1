@@ -423,6 +423,6 @@ void Hero::Draw(RenderWindow& window) {
     view.setCenter(body.getPosition());
     window.setView(view);
 	window.draw(body);
-    window.draw(border);
+    //window.draw(border);
 
 }

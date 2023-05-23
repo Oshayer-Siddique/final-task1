@@ -17,7 +17,8 @@
 
 #include"obstacle.h"
 int level2(Sprite& backg,
-	Sprite& c_prize,
+	Sprite& c_prize1,
+	Sprite& c_prize2,
 	Sprite& A,
 	Sprite& fire_sprite,
 	Texture& stonetex,
@@ -42,7 +43,10 @@ int level2(Sprite& backg,
 	Texture& firetexture,
 	Texture& spelltexture,
 	Texture& fireballTexture,
-	Texture& SkeletonTexture
+	Texture& SkeletonTexture,
+	Texture& dragonTexture2,
+	Texture& Wolftexture
+	
 )
 {
 
@@ -58,6 +62,7 @@ int level2(Sprite& backg,
 
 
 
+	
 
 
 	Set_obstacle G_LEVEL1(50);
@@ -103,10 +108,14 @@ int level2(Sprite& backg,
 	
 
 
+	
+
 	Collision player_obstacle;
 
 
-	prize crown(700, 700, c_prize);
+	prize ruby1(50, 50, c_prize1);
+	prize ruby2(1650,850,c_prize2);
+
 
 
 	float w;
@@ -129,8 +138,8 @@ int level2(Sprite& backg,
 
 
 	Hero Oshayer(&heroTexture, Vector2u(7, 13), 0.1f, 1600, 50);
-	Enemy Drago(&dragonTexture, Vector2u(3, 4), 0.1f, 100, 50, 00);
-	Enemy SKELETON(&SkeletonTexture, Vector2u(9, 4), 0.1f, 70, 1200, 500);
+	Enemy Drago(&dragonTexture2, Vector2u(12, 4), 0.1f, 100, 50, 00);
+	Enemy WOLF(&Wolftexture, Vector2u(9, 4), 0.1f, 70, 1100, 800);
 	//Hazard dangerfire(&firetexture, Vector2u(9, 1), 0.1f, 100, 1000, 500);
 	//Hazard G_greenfire(&greenfire, Vector2u(8, 1), 0.1f, 100, 800, 500);
 
@@ -167,6 +176,9 @@ int level2(Sprite& backg,
 
 		window.clear();
 		window.draw(backg);
+
+		
+		
 
 
 
@@ -251,7 +263,13 @@ int level2(Sprite& backg,
 
 
 
-		crown.set_prize(window, c_prize);
+		ruby1.set_prize(window, c_prize1);
+		ruby2.set_prize(window, c_prize2);
+
+		Oshayer.prize_hijack(window, c_prize1);
+
+
+
 		//   G_SWORD.set_material(window, A, T);
 
 
@@ -261,16 +279,25 @@ int level2(Sprite& backg,
 		   //G_DRAGON.enemy_animation(window, dragon_sprite, dragon_frames);
 		   //G_FIRE.hazard_animation(window,fire_sprite,fire_frames);
 
-		int x = crown.get_prize_position(c_prize);
+		int x = ruby1.get_prize_position(c_prize1);
+
+		int x1 = c_prize2.getPosition().x;
+
+
 
 		//cout << x << endl;
 
 		if (x == -1500) {
-			Oshayer.Update_movement(heroTexture, deltaTime, 70);
+			Oshayer.Update_movement(heroTexture, deltaTime, 100);
 
 		}
-		else {
+		else if (x1 == -1800) {
 			Oshayer.Update_movement(heroTexture, deltaTime, 100);
+
+		}
+
+		else {
+			Oshayer.Update_movement(heroTexture, deltaTime, 125);
 
 		}
 
@@ -296,7 +323,7 @@ int level2(Sprite& backg,
 
 
 		Oshayer.Draw(window);
-		Oshayer.prize_hijack(window, c_prize);
+		
 
 		Drago.Update_enemy_movement(dragonTexture, deltaTime, Oshayer.body);
 		Drago.Draw(window);
@@ -307,8 +334,8 @@ int level2(Sprite& backg,
 
 		//}
 
-		SKELETON.Update_ground_enemy_movement(SkeletonTexture, deltaTime, Oshayer.body, 500);
-		SKELETON.Draw(window);
+		WOLF.Update_ground_enemy_movement(Wolftexture, deltaTime, Oshayer.body, 500);
+		WOLF.Draw(window);
 
 
 
@@ -334,7 +361,7 @@ int level2(Sprite& backg,
 			if (w <= 0) {
 				w = 0;
 				Oshayer.Update_death(heroTexture, deltaTime, 100);
-				//break;
+				break;
 			}
 
 
@@ -342,7 +369,7 @@ int level2(Sprite& backg,
 
 		}
 
-		else if (player_obstacle.collision_chk_S(Oshayer.body, SKELETON.enemyBody)) {
+		else if (player_obstacle.collision_chk_S(Oshayer.body, WOLF.enemyBody)) {
 			w -= 0.03;
 			if (w <= 0) {
 				w = 0;
@@ -366,9 +393,55 @@ int level2(Sprite& backg,
 				Drago.enemyBody.setPosition(-5000, -5000);
 			}
 		}
+		else if ((player_obstacle.collision_chk_S(Oshayer.body, FireAnime.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime1.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime2.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime3.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime4.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime5.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime6.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime7.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime8.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime9.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime10.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime11.hazardBody)))
+			 {
+			w -= 0.02;
+			if (w <= 0) {
+				w = 0;
+				break;
+			}
+		}
+
+
+		
+
+
 
 		window.draw(healthbar_dragon);
 
+		FloatRect a = Oshayer.body.getGlobalBounds();
+		FloatRect b = Drago.enemyBody.getGlobalBounds();
+
+
+		if (a.intersects(c_prize2.getGlobalBounds())) {
+			if (Keyboard::isKeyPressed(Keyboard::H)) {
+				c_prize2.setPosition(1800, -1800);
+			}
+			else if (Keyboard::isKeyPressed(Keyboard::R)) {
+				c_prize2.setPosition(Oshayer.body.getPosition());
+			}
+
+		}
+
+
+		cout << c_prize1.getPosition().x << " " << c_prize2.getPosition().x << endl;
+
+
+		if (c_prize1.getPosition().x >= 100 and c_prize1.getPosition().x <= 200 and c_prize1.getPosition().y >= 890 and c_prize2.getPosition().x == 1800) {
+			cout << "MISSION SUCCESS" << endl;
+			return 1;
+		}
 
 
 
@@ -394,9 +467,9 @@ int level2(Sprite& backg,
 		
 		player_obstacle.collision_chk(Drago.enemyBody, S_BORDER);
 		player_obstacle.collision_chk(Drago.enemyBody, S_BORDERHORI);
-		player_obstacle.collision_chk(SKELETON.enemyBody, S_STONE);
-		player_obstacle.collision_chk(SKELETON.enemyBody, S_STONE2);
-		player_obstacle.collision_chk(SKELETON.enemyBody, S_STONE3);
+		player_obstacle.collision_chk(WOLF.enemyBody, S_STONE);
+		player_obstacle.collision_chk(WOLF.enemyBody, S_STONE2);
+		player_obstacle.collision_chk(WOLF.enemyBody, S_STONE3);
 
 
 

@@ -138,5 +138,5 @@ void Enemy::Update_ground_enemy_movement(Texture& texture, float deltaTime, Spri
 
 void Enemy::Draw(RenderWindow& window) {
 	window.draw(enemyBody);
-	window.draw(border);
+	//window.draw(border);
 }

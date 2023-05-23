@@ -15,7 +15,8 @@
 #include "SpellCast.h"
 #include"obstacle.h"
 int level3(Sprite& backg,
-	Sprite& c_prize,
+	Sprite& c_prize1,
+	Sprite& c_prize2,
 	Sprite& A,
 	Sprite& fire_sprite,
 	Texture& stonetex,
@@ -40,7 +41,10 @@ int level3(Sprite& backg,
 	Texture& firetexture,
 	Texture& spelltexture,
 	Texture& fireballTexture,
-	Texture& SkeletonTexture
+	Texture& SkeletonTexture,
+	Texture& dragontexture3,
+	Texture& monsterTexture
+
 )
 {
 
@@ -103,7 +107,9 @@ int level3(Sprite& backg,
 	Collision player_obstacle;
 
 
-	prize crown(700, 700, c_prize);
+	prize ruby1(50, 50, c_prize1);
+
+	prize ruby2(1650, 850, c_prize2);
 
 
 	float w;
@@ -125,9 +131,9 @@ int level3(Sprite& backg,
 
 
 
-	Hero Oshayer(&heroTexture, Vector2u(7, 13), 0.1f, 50, 0);
-	Enemy Drago(&dragonTexture, Vector2u(3, 4), 0.1f, 100, 1500, 0);
-	Enemy SKELETON(&SkeletonTexture, Vector2u(9, 4), 0.1f, 70, 70, 900);
+	Hero Oshayer(&heroTexture, Vector2u(7, 13), 0.1f, 900, 10);
+	Enemy Drago(&dragontexture3, Vector2u(3, 4), 0.1f, 100, 200, 800);
+	Enemy SKELETON(&monsterTexture, Vector2u(9, 4), 0.1f, 70, 1200, 900);
 	//Hazard dangerfire(&firetexture, Vector2u(9, 1), 0.1f, 100, 1000, 500);
 	//Hazard G_greenfire(&greenfire, Vector2u(8, 1), 0.1f, 100, 800, 500);
 
@@ -202,22 +208,22 @@ int level3(Sprite& backg,
 		lightlamp13.Draw(window);
 
 
-		FireAnime.Update_hazard(fireanime, deltaTime);
-		FireAnime.Draw(window);
-		FireAnime1.Update_hazard(fireanime, deltaTime);
-		FireAnime1.Draw(window);
-		FireAnime2.Update_hazard(fireanime, deltaTime);
-		FireAnime2.Draw(window);
+		//FireAnime.Update_hazard(fireanime, deltaTime);
+		//FireAnime.Draw(window);
+		//FireAnime1.Update_hazard(fireanime, deltaTime);
+		//FireAnime1.Draw(window);
+		//FireAnime2.Update_hazard(fireanime, deltaTime);
+		//FireAnime2.Draw(window);
 		FireAnime3.Update_hazard(fireanime, deltaTime);
 		FireAnime3.Draw(window);
 		FireAnime4.Update_hazard(fireanime, deltaTime);
 		FireAnime4.Draw(window);
 		FireAnime5.Update_hazard(fireanime, deltaTime);
 		FireAnime5.Draw(window);
-		FireAnime6.Update_hazard(fireanime, deltaTime);
+		/*FireAnime6.Update_hazard(fireanime, deltaTime);
 		FireAnime6.Draw(window);
 		FireAnime7.Update_hazard(fireanime, deltaTime);
-		FireAnime7.Draw(window);
+		FireAnime7.Draw(window);*/
 
 
 
@@ -229,7 +235,10 @@ int level3(Sprite& backg,
 
 
 
-		crown.set_prize(window, c_prize);
+		ruby1.set_prize(window, c_prize1);
+		ruby2.set_prize(window, c_prize2);
+
+		Oshayer.prize_hijack(window, c_prize1);
 		//   G_SWORD.set_material(window, A, T);
 
 
@@ -239,16 +248,24 @@ int level3(Sprite& backg,
 		   //G_DRAGON.enemy_animation(window, dragon_sprite, dragon_frames);
 		   //G_FIRE.hazard_animation(window,fire_sprite,fire_frames);
 
-		int x = crown.get_prize_position(c_prize);
+		int x = ruby1.get_prize_position(c_prize1);
+
+		int x1 = c_prize2.getPosition().x;
+
 
 		//cout << x << endl;
 
 		if (x == -1500) {
-			Oshayer.Update_movement(heroTexture, deltaTime, 70);
+			Oshayer.Update_movement(heroTexture, deltaTime, 100);
 
 		}
-		else {
+		else if (x1 == -1800) {
 			Oshayer.Update_movement(heroTexture, deltaTime, 100);
+
+		}
+
+		else {
+			Oshayer.Update_movement(heroTexture, deltaTime, 125);
 
 		}
 
@@ -274,7 +291,7 @@ int level3(Sprite& backg,
 
 
 		Oshayer.Draw(window);
-		Oshayer.prize_hijack(window, c_prize);
+		
 
 		Drago.Update_enemy_movement(dragonTexture, deltaTime, Oshayer.body);
 		Drago.Draw(window);
@@ -312,7 +329,7 @@ int level3(Sprite& backg,
 			if (w <= 0) {
 				w = 0;
 				Oshayer.Update_death(heroTexture, deltaTime, 100);
-				//break;
+				break;
 			}
 
 
@@ -327,6 +344,17 @@ int level3(Sprite& backg,
 
 			}
 
+		}
+
+		else if((player_obstacle.collision_chk_S(Oshayer.body, FireAnime3.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime4.hazardBody)) or
+			(player_obstacle.collision_chk_S(Oshayer.body, FireAnime5.hazardBody))){
+
+			w -= 0.02;
+			if (w <= 0) {
+				w = 0;
+				break;
+			}
 		}
 
 		window.draw(healthbar_player);
@@ -346,6 +374,28 @@ int level3(Sprite& backg,
 		}
 
 		window.draw(healthbar_dragon);
+
+		FloatRect a = Oshayer.body.getGlobalBounds();
+		FloatRect b = Drago.enemyBody.getGlobalBounds();
+
+		if (a.intersects(c_prize2.getGlobalBounds())) {
+			if (Keyboard::isKeyPressed(Keyboard::H)) {
+				c_prize2.setPosition(1800, -1800);
+			}
+			else if (Keyboard::isKeyPressed(Keyboard::R)) {
+				c_prize2.setPosition(Oshayer.body.getPosition());
+			}
+
+		}
+
+		cout << c_prize1.getPosition().x << " " << c_prize2.getPosition().x << endl;
+
+
+		if (c_prize1.getPosition().x >= 900 and c_prize1.getPosition().x <= 1000 and c_prize1.getPosition().y >= 890 and c_prize2.getPosition().x >= 1800) {
+			cout << "MISSION SUCCESS" << endl;
+			return 1;
+		}
+
 
 
 
