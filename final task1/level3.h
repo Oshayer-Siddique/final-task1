@@ -341,6 +341,7 @@ int level3(Sprite& backg,
 			w -= 0.03;
 			if (w <= 0) {
 				w = 0;
+				break;
 
 			}
 
@@ -393,7 +394,7 @@ int level3(Sprite& backg,
 
 		if (c_prize1.getPosition().x >= 900 and c_prize1.getPosition().x <= 1000 and c_prize1.getPosition().y >= 890 and c_prize2.getPosition().x >= 1800) {
 			cout << "MISSION SUCCESS" << endl;
-			return 1;
+			return 3;
 		}
 
 

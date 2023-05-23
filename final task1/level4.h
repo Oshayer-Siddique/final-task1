@@ -400,7 +400,7 @@ int level4(Sprite& back4g,
 
 		if (c_prize1.getPosition().x >= 1600 and c_prize1.getPosition().x <= 1700 and c_prize1.getPosition().y >= 890 and c_prize2.getPosition().x == 1800) {
 			cout << "MISSION SUCCESS" << endl;
-			return 1;
+			return 4;
 		}
 
 

@@ -40,6 +40,19 @@ int main()
     fnt.loadFromFile("F:/SFML Projects/final task1/New folder/rockb.ttf");
     Text txt[4];
 
+    SoundBuffer introbuffer;
+    introbuffer.loadFromFile("F:/SFML Projects/final task1/New folder/all.wav");
+    Music intromusic;
+    intromusic.openFromFile("F:/SFML Projects/final task1/New folder/all.wav");\
+        intromusic.setLoop(true);
+    intromusic.play();
+
+
+
+
+
+
+
 
     Texture tex, texmenu,
         cretex,
@@ -78,7 +91,7 @@ int main()
         minioter;
         
 
-    Sprite backg, back2g, back3g, back4g, backmenu, crespr,c_prize3,c_prize4;
+    Sprite backg, back2g, back3g, back4g, backmenu, crespr,c_prize3,c_prize4,introspr;
 
     if (!stonetex.loadFromFile("F:/SFML Projects/final task1/New folder/block.png")) {}
     if (!stonerevtex.loadFromFile("F:/SFML Projects/final task1/New folder/blockrev.png")) {}
@@ -102,10 +115,13 @@ int main()
     if (!torch3tex.loadFromFile("F:/SFML Projects/final task1/New folder/TorchType4.png")) {}
     if (!torch4tex.loadFromFile("F:/SFML Projects/final task1/New folder/TorchLevel4.png")) {}
 
+
+
     if (!fireanime.loadFromFile("F:/SFML Projects/final task1/New folder/fireanime.png")) {}
     if (!fire2anime.loadFromFile("F:/SFML Projects/final task1/New folder/green_fire.png")) {}
-    if (!cointex.loadFromFile("F:/SFML Projects/final task1/New folder/coin.png")) {}
-
+    if (!cointex.loadFromFile("F:/SFML Projects/final task1/New folder/MODOS.png")) {}
+    introspr.setTexture(cointex);
+    introspr.setPosition(610, 100);
     MainMenu mainmenu(1800, 1000);
     if (!texmenu.loadFromFile("menuback.jpg")) {}
     backmenu.setTexture(texmenu);
@@ -269,7 +285,38 @@ int main()
 
 
     //prize crown(700, 700, c_prize);
+    txt[0].setFont(fnt);
+    txt[0].setFillColor(Color::Color(255, 222, 173));
+    txt[0].setString("Developers");
+    txt[0].setCharacterSize(35);
+    txt[0].setPosition(820, 350);
 
+
+
+    txt[1].setFont(fnt);
+    txt[1].setFillColor(Color::Color(255, 222, 173));
+    txt[1].setString("Mosharrifur Rahman Ratul");
+    txt[1].setCharacterSize(40);
+    txt[1].setPosition(685, 650);
+
+
+    txt[2].setFont(fnt);
+    txt[2].setFillColor(Color::Color(255, 222, 173));
+    txt[2].setString("Oshayer Siddique");
+    txt[2].setCharacterSize(40);
+    txt[2].setPosition(750, 450);
+
+
+
+    txt[3].setFont(fnt);
+    txt[3].setFillColor(Color::Color(255, 222, 173));
+    txt[3].setString("Momrez Neemeri Mohsin");
+    txt[3].setCharacterSize(40);
+    txt[3].setPosition(685, 550);
+
+
+
+    crespr.setPosition(487, 280);
 
 
 
@@ -313,7 +360,7 @@ int main()
                     int y = mainmenu.mousepress();
                     if (x == 0 || y == 0)
                     {
-                        l = level1(backg,
+                        p = level1(backg,
                             c_prize1,
                             c_prize2,
                             A,
@@ -457,49 +504,157 @@ int main()
 
 
                         //}
-if (l == -1)
-{
-    p = level1(backg,
-        c_prize1,
-        c_prize2,
-        A,
-        fire_sprite,
-        stonetex,
-        stonerevtex,
-        stone2tex,
-        stone2revtex,
-        stone3tex,
-        stone3revtex,
-        watertex,
-        bordertex,
-        borderhoritex,
-        opendoortex,
-        opendoorrevtex,
-        doortex,
-        doorrevtex,
-        chesttex,
-        openchesttex,
-        torchtex,
-        fireanime,
-        heroTexture,
-        dragonTexture,
-        firetexture,
-        spelltexture,
-        fireballTexture,
-        SkeletonTexture);
+
+                     if (p == 1) {
+                        p = level2(back2g,
+            c_prize1,
+            c_prize2,
+            A,
+            fire_sprite,
+            stonetex,
+            stonerevtex,
+            stone2tex,
+            stone2revtex,
+            stone3tex,
+            stone3revtex,
+            watertex,
+            bordertex,
+            borderhoritex,
+            opendoortex,
+            opendoorrevtex,
+            doortex,
+            doorrevtex,
+            chesttex,
+            openchesttex,
+            torch2tex,
+            fireanime,
+            heroTexture,
+            dragonTexture,
+            firetexture,
+            spelltexture,
+            fireballTexture,
+            SkeletonTexture,
+            dragonTexture2,
+            Wolftexture
+
+
+
+
+        );
+
+        if (p == 2) {
+            p = level3(back2g,
+                c_prize1,
+                c_prize2,
+                A,
+                fire_sprite,
+                stonetex,
+                stonerevtex,
+                stone2tex,
+                stone2revtex,
+                stone3tex,
+                stone3revtex,
+                watertex,
+                bordertex,
+                borderhoritex,
+                opendoortex,
+                opendoorrevtex,
+                doortex,
+                doorrevtex,
+                chesttex,
+                openchesttex,
+                torch2tex,
+                fireanime,
+                heroTexture,
+                dragonTexture,
+                firetexture,
+                spelltexture,
+                fireballTexture,
+                SkeletonTexture,
+                dragonTexture2,
+                Wolftexture
+
+
+
+
+            );
+
+            if (p == 3) {
+
+                p = level4(back4g,
+                    c_prize1,
+                    c_prize2,
+                    A,
+                    fire_sprite,
+                    stonetex,
+                    stonerevtex,
+                    stone2tex,
+                    stone2revtex,
+                    stone3tex,
+                    stone3revtex,
+                    watertex,
+                    bordertex,
+                    borderhoritex,
+                    opendoortex,
+                    opendoorrevtex,
+                    doortex,
+                    doorrevtex,
+                    chesttex,
+                    openchesttex,
+                    torch4tex,
+                    fireanime,
+                    heroTexture,
+                    dragonTexture,
+                    firetexture,
+                    spelltexture,
+                    fireballTexture,
+                    SkeletonTexture,
+                    dragontexture4,
+                    minioter
+                );
+                RenderWindow credit(VideoMode(width, height), "Credits");
+
+
+                while (credit.isOpen())
+                {
+                    Event creditevent;
+                    while (credit.pollEvent(creditevent))
+                    {
+                        if (creditevent.type == Event::Closed)
+                            credit.close();
+
+                    }
+
+                    credit.clear();
+
+
+                    credit.draw(crespr);
+                    for (int i = 0;i < 4;i++)
+                    {
+                        credit.draw(txt[i]);
+                    }
+                    credit.display();
+
+
+                }
+            }
+        }
+    }
                         }
 
 
 
-                    }
+                    
 
                     if (x == 1 || y == 1)
                     {
                          p = 0;
                         menu.close();
                         l = level(backmenu, mainmenu);
-                        if (l == 0) {
-                            p = level1(backg,
+                        if (l == 0) 
+                        {
+
+                            l = level1(backg,
                                 c_prize1,
                                 c_prize2,
                                 A,
@@ -564,6 +719,148 @@ if (l == -1)
                                         SkeletonTexture);
                                 }
                                 cout << p;
+                                if (p == 1) {
+                                    p = level2(back2g,
+                                        c_prize1,
+                                        c_prize2,
+                                        A,
+                                        fire_sprite,
+                                        stonetex,
+                                        stonerevtex,
+                                        stone2tex,
+                                        stone2revtex,
+                                        stone3tex,
+                                        stone3revtex,
+                                        watertex,
+                                        bordertex,
+                                        borderhoritex,
+                                        opendoortex,
+                                        opendoorrevtex,
+                                        doortex,
+                                        doorrevtex,
+                                        chesttex,
+                                        openchesttex,
+                                        torch2tex,
+                                        fireanime,
+                                        heroTexture,
+                                        dragonTexture,
+                                        firetexture,
+                                        spelltexture,
+                                        fireballTexture,
+                                        SkeletonTexture,
+                                        dragonTexture2,
+                                        Wolftexture
+
+
+
+
+                                    );
+
+                                    if (p == 2) {
+                                        p = level3(back2g,
+                                            c_prize1,
+                                            c_prize2,
+                                            A,
+                                            fire_sprite,
+                                            stonetex,
+                                            stonerevtex,
+                                            stone2tex,
+                                            stone2revtex,
+                                            stone3tex,
+                                            stone3revtex,
+                                            watertex,
+                                            bordertex,
+                                            borderhoritex,
+                                            opendoortex,
+                                            opendoorrevtex,
+                                            doortex,
+                                            doorrevtex,
+                                            chesttex,
+                                            openchesttex,
+                                            torch2tex,
+                                            fireanime,
+                                            heroTexture,
+                                            dragonTexture,
+                                            firetexture,
+                                            spelltexture,
+                                            fireballTexture,
+                                            SkeletonTexture,
+                                            dragonTexture2,
+                                            Wolftexture
+
+
+
+
+                                        );
+
+                                        if(p==3){
+
+                                        p = level4(back4g,
+                                            c_prize1,
+                                            c_prize2,
+                                            A,
+                                            fire_sprite,
+                                            stonetex,
+                                            stonerevtex,
+                                            stone2tex,
+                                            stone2revtex,
+                                            stone3tex,
+                                            stone3revtex,
+                                            watertex,
+                                            bordertex,
+                                            borderhoritex,
+                                            opendoortex,
+                                            opendoorrevtex,
+                                            doortex,
+                                            doorrevtex,
+                                            chesttex,
+                                            openchesttex,
+                                            torch4tex,
+                                            fireanime,
+                                            heroTexture,
+                                            dragonTexture,
+                                            firetexture,
+                                            spelltexture,
+                                            fireballTexture,
+                                            SkeletonTexture,
+                                            dragontexture4,
+                                            minioter
+                                        );
+
+                                        if(p==4)
+                                        {
+                                            RenderWindow credit(VideoMode(width, height), "Credits");
+
+
+                                            while (credit.isOpen())
+                                            {
+                                                Event creditevent;
+                                                while (credit.pollEvent(creditevent))
+                                                {
+                                                    if (creditevent.type == Event::Closed)
+                                                        credit.close();
+
+                                                }
+
+                                                credit.clear();
+
+
+                                                credit.draw(crespr);
+                                                for (int i = 0;i < 4;i++)
+                                                {
+                                                    credit.draw(txt[i]);
+                                                }
+                                                credit.display();
+
+
+                                            }
+                                        }
+
+                                        }
+                                    }
+                                }
+
+
 
                               //  RenderWindow gameover(VideoMode(width, height), "Credits");
 
@@ -704,6 +1001,32 @@ if (l == -1)
                                   minioter
                               );
 
+                              RenderWindow credit(VideoMode(width, height), "Credits");
+
+
+                              while (credit.isOpen())
+                              {
+                                  Event creditevent;
+                                  while (credit.pollEvent(creditevent))
+                                  {
+                                      if (creditevent.type == Event::Closed)
+                                          credit.close();
+
+                                  }
+
+                                  credit.clear();
+
+
+                                  credit.draw(crespr);
+                                  for (int i = 0;i < 4;i++)
+                                  {
+                                      credit.draw(txt[i]);
+                                  }
+                                  credit.display();
+
+
+                              }
+
 
 
                           }
@@ -714,38 +1037,7 @@ if (l == -1)
                     if (x == 2 || y == 2)
                     {
                         RenderWindow credit(VideoMode(width, height), "Credits");
-                        txt[0].setFont(fnt);
-                        txt[0].setFillColor(Color::Color(255, 222, 173));
-                        txt[0].setString("Developers");
-                        txt[0].setCharacterSize(35);
-                        txt[0].setPosition(820, 350);
-
-
-
-                        txt[1].setFont(fnt);
-                        txt[1].setFillColor(Color::Color(255, 222, 173));
-                        txt[1].setString("Mosharrifur Rahman Ratul");
-                        txt[1].setCharacterSize(40);
-                        txt[1].setPosition(685, 650);
-
-
-                        txt[2].setFont(fnt);
-                        txt[2].setFillColor(Color::Color(255, 222, 173));
-                        txt[2].setString("Oshayer Siddique");
-                        txt[2].setCharacterSize(40);
-                        txt[2].setPosition(750, 450);
-
-
-
-                        txt[3].setFont(fnt);
-                        txt[3].setFillColor(Color::Color(255, 222, 173));
-                        txt[3].setString("Momrez Neemeri Mohsin");
-                        txt[3].setCharacterSize(40);
-                        txt[3].setPosition(685, 550);
-
-
-
-                        crespr.setPosition(487, 280);
+                        
 
                         while (credit.isOpen())
                         {
@@ -789,6 +1081,7 @@ if (l == -1)
         }
         menu.draw(backmenu);
         mainmenu.draw(menu);
+        menu.draw(introspr);
         menu.display();
     }
 

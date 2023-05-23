@@ -8,7 +8,7 @@ MainMenu::MainMenu(float menuwidth, float menuheight)
 	mainMenu[0].setFillColor(Color::Color(255, 222, 173));
 	mainMenu[0].setString("NewGame");
 	mainMenu[0].setCharacterSize(40);
-	mainMenu[0].setPosition(800, 150);
+	mainMenu[0].setPosition(855, 450);
 
 	//play levels
 
@@ -16,7 +16,7 @@ MainMenu::MainMenu(float menuwidth, float menuheight)
 	mainMenu[1].setFillColor(Color::Color(255, 222, 173));
 	mainMenu[1].setString("Levels");
 	mainMenu[1].setCharacterSize(40);
-	mainMenu[1].setPosition(800, 350);
+	mainMenu[1].setPosition(875, 550);
 
 	//credit
 
@@ -24,7 +24,7 @@ MainMenu::MainMenu(float menuwidth, float menuheight)
 	mainMenu[2].setFillColor(Color::Color(255, 222, 173));
 	mainMenu[2].setString("Credit");
 	mainMenu[2].setCharacterSize(40);
-	mainMenu[2].setPosition(800, 550);
+	mainMenu[2].setPosition(875, 650);
 
 	//exit
 
@@ -32,7 +32,7 @@ MainMenu::MainMenu(float menuwidth, float menuheight)
 	mainMenu[3].setFillColor(Color::Color(255, 222, 173));
 	mainMenu[3].setString("Exit");
 	mainMenu[3].setCharacterSize(40);
-	mainMenu[3].setPosition(800, 750);
+	mainMenu[3].setPosition(875, 750);
 
 
 
